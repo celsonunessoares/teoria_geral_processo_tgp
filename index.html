@@ -1,1824 +1,1661 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="h-full bg-slate-100">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulado de Teoria Geral do Processo (TGP) - 60 Questões</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#1d4ed8',
-                            600: '#1e40af',
-                            700: '#1d3557',
-                            800: '#0f172a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Simulado de Teoria Geral do Processo - Concursos Públicos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e293b;
+            --secondary: #475569;
+            --accent: #2563eb;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+
+            --success: #059669;
+            --success-bg: #ecfdf5;
+            --success-border: #a7f3d0;
+
+            --error: #dc2626;
+            --error-bg: #fef2f2;
+            --error-border: #fecaca;
+
+            --warning: #d97706;
+            --warning-bg: #fffbeb;
+
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background:
-                radial-gradient(ellipse at top left, rgba(219, 234, 254, 0.72), transparent 36rem),
-                linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .site-header {
-            background: linear-gradient(115deg, #0b1220 0%, #14213d 58%, #1d3557 100%);
-            box-shadow: 0 12px 30px -18px rgba(15, 23, 42, 0.8);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 1.5rem 1rem;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 50;
         }
 
-        #card-questao,
-        #container-resultado-final > div,
-        #container-simulado > div > div {
-            box-shadow: 0 22px 55px -32px rgba(15, 23, 42, 0.38);
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        button:focus-visible {
-            outline: 3px solid rgba(59, 130, 246, 0.55);
-            outline-offset: 2px;
+        .logo-area h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
+        .logo-area span {
+            font-size: 0.85rem;
+            color: #93c5fd;
+            font-weight: 400;
+            display: block;
         }
 
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f5f9;
+        .header-actions {
+            display: flex;
+            gap: 0.5rem;
         }
 
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 3px;
+        .main-container {
+            max-width: 1000px;
+            margin: 1.5rem auto 0;
+            padding: 0 1rem;
+            width: 100%;
+            flex: 1;
         }
 
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+        .dashboard-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .stat-box {
+            background-color: #f1f5f9;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: 0.25rem;
+        }
+
+        .stat-value.success {
+            color: var(--success);
+        }
+
+        .stat-value.error {
+            color: var(--error);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar-bg {
+            background-color: #e2e8f0;
+            height: 10px;
+            border-radius: 999px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+            border-radius: 999px;
+        }
+
+        .question-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .question-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-easy {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-medium {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-topic {
+            background-color: #f1f5f9;
+            color: #334155;
+        }
+
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 0.85rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: #ffffff;
+            user-select: none;
+        }
+
+        .option-item:hover:not(.disabled) {
+            border-color: var(--primary-light);
+            background-color: #f0f7ff;
+        }
+
+        .option-item.selected {
+            border-color: var(--accent);
+            background-color: #eff6ff;
+            box-shadow: 0 0 0 1px var(--accent);
+        }
+
+        .option-item.correct-answer {
+            border-color: var(--success) !important;
+            background-color: var(--success-bg) !important;
+            color: #064e3b;
+        }
+
+        .option-item.incorrect-answer {
+            border-color: var(--error) !important;
+            background-color: var(--error-bg) !important;
+            color: #7f1d1d;
+        }
+
+        .option-item.disabled {
+            cursor: default;
+        }
+
+        .option-prefix {
+            font-weight: 700;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.85rem;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+        }
+
+        .option-item.selected .option-prefix {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .option-item.correct-answer .option-prefix {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .option-item.incorrect-answer .option-prefix {
+            background-color: var(--error);
+            color: white;
+        }
+
+        .option-text {
+            font-size: 0.95rem;
+            padding-top: 2px;
+            flex: 1;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: #1d4ed8;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background-color: #cbd5e1;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-danger-outline {
+            background-color: transparent;
+            border: 1px solid var(--error-border);
+            color: var(--error);
+        }
+
+        .btn-danger-outline:hover {
+            background-color: var(--error-bg);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .feedback-box {
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            margin-top: 1.5rem;
+            border: 1px solid transparent;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .feedback-box.correct {
+            background-color: var(--success-bg);
+            border-color: var(--success-border);
+            color: #065f46;
+        }
+
+        .feedback-box.incorrect {
+            background-color: var(--error-bg);
+            border-color: var(--error-border);
+            color: #991b1b;
+        }
+
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .explanation-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.6);
+            padding: 0.85rem;
+            border-radius: var(--radius-sm);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .modal-body {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+        }
+
+        /* Views management */
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        /* Final result styling */
+        .result-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .result-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .score-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent) var(--score-angle, 0deg), #e2e8f0 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 115px;
+            height: 115px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .score-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .score-percent {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .performance-msg {
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 0.85rem 1.25rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        /* Review list view */
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-item {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .review-item.status-correct {
+            border-left-color: var(--success);
+        }
+
+        .review-item.status-incorrect {
+            border-left-color: var(--error);
+        }
+
+        .review-item.status-unanswered {
+            border-left-color: var(--text-muted);
+        }
+
+        .review-q-num {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 
-<body class="h-full flex flex-col text-slate-800 antialiased selection:bg-blue-200">
+<body>
 
-    <!-- HEADER -->
-    <header class="site-header text-white sticky top-0 z-30">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 min-h-16 py-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
-            <div class="flex items-center space-x-3">
-                <div class="bg-blue-600 p-2 rounded-lg text-white shadow">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 14l9-5-9-5-9 5 9 5z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                    </svg>
-                </div>
-                <div>
-                    <h1 class="font-bold text-base sm:text-lg leading-tight">Simulado TGP</h1>
-                    <p class="text-[10px] sm:text-xs text-slate-400">Teoria Geral do Processo • 60 Questões</p>
-                </div>
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <h1>⚖️ SIMULADO TGP - AV1</h1>
+                <span>Teoria Geral do Processo • Foco em Direito & Concursos</span>
             </div>
-
-            <div class="flex items-center space-x-2 sm:space-x-3">
-                <button id="btn-revisar-header" onclick="abrirModalRevisao()"
-                    aria-label="Revisar questões"
-                    class="flex items-center space-x-1 text-xs sm:text-sm bg-white/5 hover:bg-white/10 text-slate-200 px-2.5 sm:px-3 py-2 rounded-lg border border-white/10 transition">
-                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                        </svg>
-                    <span class="hidden sm:inline">Revisar Questões</span>
-                </button>
-
-                <button onclick="solicitarReiniciar()"
-                    aria-label="Reiniciar simulado"
-                    class="flex items-center space-x-1 text-xs sm:text-sm bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 px-2.5 sm:px-3 py-2 rounded-lg border border-rose-800/50 transition">
-                    <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                        </svg>
-                    <span class="hidden sm:inline">Reiniciar</span>
-                </button>
+            <div class="header-actions">
+                <button class="btn btn-outline" id="btn-header-review">📋 Revisar</button>
+                <button class="btn btn-outline" id="btn-header-reset">🔄 Reiniciar</button>
             </div>
         </div>
     </header>
 
-    <!-- MAIN CONTAINER -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+    <main class="main-container">
 
-        <!-- BARRA DE PROGRESSO GLOBAL -->
-        <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-200 mb-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                <div class="flex items-center space-x-2">
-                    <span id="badge-progresso"
-                        class="text-xs font-semibold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">Em
-                        Progresso</span>
-                    <span class="text-xs font-medium text-slate-500" id="txt-progresso-contador" aria-live="polite">Questão 1 de 60</span>
+        <section class="dashboard-card">
+            <div class="dashboard-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Questão</div>
+                    <div class="stat-value" id="stat-current-q">1 / 40</div>
                 </div>
-                <div class="flex items-center space-x-4 text-xs font-semibold">
-                    <span class="text-emerald-600 flex items-center gap-1">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
-                        Acertos: <strong id="val-acertos">0</strong>
-                    </span>
-                    <span class="text-rose-600 flex items-center gap-1">
-                        <span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span>
-                        Erros: <strong id="val-erros">0</strong>
-                    </span>
-                    <span class="text-blue-700 flex items-center gap-1">
-                        Aproveitamento: <strong id="val-aproveitamento">0%</strong>
-                    </span>
+                <div class="stat-box">
+                    <div class="stat-label">Acertos</div>
+                    <div class="stat-value success" id="stat-correct">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Erros</div>
+                    <div class="stat-value error" id="stat-incorrect">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Aproveitamento</div>
+                    <div class="stat-value" id="stat-accuracy">0.0%</div>
                 </div>
             </div>
-            <!-- BARRA -->
-            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
-                <div id="barra-progresso" role="progressbar" aria-label="Progresso do simulado"
-                    aria-valuemin="0" aria-valuemax="60" aria-valuenow="0"
-                    class="bg-gradient-to-r from-blue-600 to-indigo-600 h-3 rounded-full transition-all duration-300"
-                    style="width: 0%"></div>
+            <div class="progress-header">
+                <span>Progresso do Simulado</span>
+                <span id="progress-percent-text">0%</span>
             </div>
-        </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-bar"></div>
+            </div>
+        </section>
 
-        <!-- LAYOUT GRID SIMULADO -->
-        <div id="container-simulado" class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-
-            <!-- PAINEL PRINCIPAL DA QUESTÃO (3 COLS) -->
-            <div class="lg:col-span-3 space-y-6">
-
-                <!-- CARD DA QUESTÃO -->
-                <div id="card-questao"
-                    class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-all duration-200">
-
-                    <!-- CABEÇALHO DA QUESTÃO -->
-                    <div
-                        class="bg-slate-50 border-b border-slate-200 px-6 py-4 flex flex-wrap items-center justify-between gap-3">
-                        <div class="flex items-center space-x-2">
-                            <span class="bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm"
-                                id="num-questao">
-                                QUESTÃO 01
-                            </span>
-                            <span id="badge-nivel"
-                                class="text-xs font-medium px-2.5 py-1 rounded-md border bg-amber-50 text-amber-700 border-amber-200">
-                                Nível Médio
-                            </span>
-                        </div>
-                        <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Teoria Geral do
-                            Processo</span>
-                    </div>
-
-                    <!-- ENUNCIADO -->
-                    <div class="p-4 sm:p-8">
-                        <p id="texto-enunciado"
-                            class="text-slate-800 font-medium text-base sm:text-lg leading-relaxed mb-6">
-                            Carregando enunciado da questão...
-                        </p>
-
-                        <!-- ALTERNATIVAS -->
-                        <div id="container-alternativas" class="space-y-3" role="group" aria-label="Alternativas da questão">
-                            <!-- Injetado dinamicamente via JS -->
-                        </div>
-                        <p class="mt-3 text-xs text-slate-400" aria-label="Atalho de teclado">
-                            Atalho: pressione <kbd class="font-semibold text-slate-600">A</kbd>,
-                            <kbd class="font-semibold text-slate-600">B</kbd>,
-                            <kbd class="font-semibold text-slate-600">C</kbd> ou
-                            <kbd class="font-semibold text-slate-600">D</kbd> para selecionar uma alternativa.
-                        </p>
-
-                        <!-- BOTÃO RESPONDER -->
-                        <div class="mt-8 flex justify-end">
-                            <button id="btn-responder" onclick="processarResposta()" disabled
-                                class="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
-                                <span>Responder Questão</span>
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- PAINEL DE CORREÇÃO E EXPLICAÇÃO (OCULTO INICIALMENTE) -->
-                    <div id="painel-correcao" class="hidden border-t border-slate-200 bg-slate-50 p-4 sm:p-8">
-                        <div id="status-resposta" role="status" aria-live="assertive"
-                            class="flex items-center space-x-3 mb-4 p-4 rounded-xl font-bold text-base sm:text-lg shadow-sm">
-                            <!-- Injetado via JS (CORRETA / INCORRETA) -->
-                        </div>
-
-                        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-3 mb-6">
-                            <h4
-                                class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                Comentário Didático & Fundamentação:
-                            </h4>
-                            <p id="texto-explicacao" class="text-sm text-slate-700 leading-relaxed">
-                                Explicação detalhada da questão...
-                            </p>
-                        </div>
-
-                        <div class="flex justify-end">
-                            <button id="btn-proxima" onclick="avancarQuestao()"
-                                class="w-full sm:w-auto px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
-                                <span id="lbl-proxima">Próxima Questão</span>
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                            </button>
-                        </div>
-                    </div>
-
+        <section id="quiz-view" class="view-section active">
+            <div class="question-card">
+                <div class="question-meta">
+                    <span class="badge badge-easy" id="q-level">Nível Fácil</span>
+                    <span class="badge badge-topic" id="q-topic">Teoria Geral</span>
                 </div>
 
-            </div>
+                <h2 class="question-title" id="q-text">Carregando enunciado...</h2>
 
-            <!-- PAINEL LATERAL DE DESEMPENHO (1 COL) -->
-            <div class="space-y-6">
-                <!-- METRICAS DETALHADAS -->
-                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
-                    <h3
-                        class="text-sm font-bold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-3 flex items-center gap-2">
-                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                            </svg>
-                        Painel de Controle
-                    </h3>
-
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <span class="block text-xs font-medium text-slate-400">Respondidas</span>
-                            <span id="stat-respondidas" class="text-xl font-extrabold text-slate-800">0 / 60</span>
-                        </div>
-                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <span class="block text-xs font-medium text-slate-400">Pendentes</span>
-                            <span id="stat-pendentes" class="text-xl font-extrabold text-slate-800">60</span>
-                        </div>
-                        <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-100">
-                            <span class="block text-xs font-medium text-emerald-600">Taxa de Acerto</span>
-                            <span id="stat-pct-acerto" class="text-xl font-extrabold text-emerald-700">0%</span>
-                        </div>
-                        <div class="bg-rose-50 p-3 rounded-xl border border-rose-100">
-                            <span class="block text-xs font-medium text-rose-600">Taxa de Erro</span>
-                            <span id="stat-pct-erro" class="text-xl font-extrabold text-rose-700">0%</span>
-                        </div>
-                    </div>
-
-                    <button onclick="abrirModalRevisao()"
-                        class="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs sm:text-sm rounded-xl transition flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                            </svg>
-                        <span>Abrir Mapa de Questões</span>
-                    </button>
+                <div class="options-list" id="options-container">
+                    <!-- Opções inseridas via JS -->
                 </div>
 
-                <!-- DICAS RAPIDAS -->
-                <div class="bg-blue-900 text-white rounded-2xl p-5 shadow-sm space-y-2">
-                    <div class="flex items-center space-x-2 text-blue-300 text-xs font-bold uppercase tracking-wider">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                        <span>Dica para Concurseiros</span>
+                <div class="feedback-box" id="feedback-panel">
+                    <div class="feedback-header" id="feedback-header">
+                        <!-- Ícone e Resultado -->
                     </div>
-                    <p class="text-xs text-blue-100 leading-relaxed">
-                        A Teoria Geral do Processo é fundamentada nas garantias constitucionais (Art. 1º CPC). Atente-se
-                        à vedação de decisão surpresa, cooperação e boa-fé objetiva!
-                    </p>
+                    <div class="explanation-text" id="feedback-explanation">
+                        <!-- Explicação didática -->
+                    </div>
                 </div>
             </div>
 
-        </div>
-
-        <!-- RESULTADO FINAL (OCULTO POR PADRÃO) -->
-        <div id="container-resultado-final" class="hidden max-w-4xl mx-auto space-y-8 py-4">
-            <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-200 text-center space-y-6">
-
-                <div class="inline-flex p-4 bg-blue-50 text-blue-600 rounded-full shadow-inner mb-2">
-                    <svg class="w-16 h-16 sm:w-20 sm:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                        </svg>
+            <div class="action-bar">
+                <button class="btn btn-danger-outline" id="btn-reset">Reiniciar Simulado</button>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn btn-primary" id="btn-submit">Responder</button>
+                    <button class="btn btn-secondary" id="btn-next" style="display: none;">Próxima Questão ➔</button>
                 </div>
-
-                <div>
-                    <span
-                        class="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1.5 rounded-full border border-blue-200">Relatório
-                        Final</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">SIMULADO CONCLUÍDO</h2>
-                    <p class="text-sm sm:text-base text-slate-500 mt-1">Você respondeu a todas as 60 questões do
-                        simulado de TGP.</p>
-                </div>
-
-                <!-- CARDS RESUMO -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4">
-                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                        <span class="block text-xs font-medium text-slate-400">Total</span>
-                        <strong class="text-2xl font-black text-slate-800">60</strong>
-                    </div>
-                    <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
-                        <span class="block text-xs font-medium text-emerald-600">Acertos</span>
-                        <strong id="rf-acertos" class="text-2xl font-black text-emerald-700">0</strong>
-                    </div>
-                    <div class="bg-rose-50 p-4 rounded-2xl border border-rose-200">
-                        <span class="block text-xs font-medium text-rose-600">Erros</span>
-                        <strong id="rf-erros" class="text-2xl font-black text-rose-700">0</strong>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-2xl border border-blue-200">
-                        <span class="block text-xs font-medium text-blue-600">Aproveitamento</span>
-                        <strong id="rf-aproveitamento" class="text-2xl font-black text-blue-700">0%</strong>
-                    </div>
-                </div>
-
-                <!-- MENSAGEM DESEMPENHO -->
-                <div id="rf-mensagem-card" class="p-6 rounded-2xl border text-left">
-                    <h3 id="rf-mensagem-titulo" class="font-bold text-lg mb-1">...</h3>
-                    <p id="rf-mensagem-desc" class="text-sm leading-relaxed">...</p>
-                </div>
-
-                <!-- BOTOES DE AÇÃO -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                    <button onclick="abrirModalRevisao()"
-                        class="w-full sm:w-auto px-8 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl transition flex items-center justify-center space-x-2">
-                        <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                            </svg>
-                        <span>Revisar Todas as Questões</span>
-                    </button>
-                    <button onclick="solicitarReiniciar()"
-                        class="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/20 transition flex items-center justify-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                            </svg>
-                        <span>Refazer Simulado</span>
-                    </button>
-                </div>
-
             </div>
-        </div>
+        </section>
+
+        <section id="result-view" class="view-section">
+            <div class="result-card">
+                <h2 class="result-title">🎉 SIMULADO CONCLUÍDO</h2>
+                <p class="result-subtitle">Você respondeu todas as 40 questões do conteúdo programático de TGP.</p>
+
+                <div class="score-circle" id="score-circle">
+                    <div class="score-inner">
+                        <div class="score-percent" id="res-percent">0%</div>
+                        <div class="score-label">APROVEITAMENTO</div>
+                    </div>
+                </div>
+
+                <div id="res-msg-badge" class="performance-msg">
+                    Avaliação de Desempenho
+                </div>
+
+                <div class="dashboard-grid" style="margin-bottom: 2rem;">
+                    <div class="stat-box">
+                        <div class="stat-label">Total de Questões</div>
+                        <div class="stat-value">40</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Acertos</div>
+                        <div class="stat-value success" id="res-correct">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Erros</div>
+                        <div class="stat-value error" id="res-incorrect">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">% de Erros</div>
+                        <div class="stat-value" id="res-error-percent">0%</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-secondary" id="btn-res-review">📋 Revisar Questões</button>
+                    <button class="btn btn-primary" id="btn-res-restart">🔄 Refazer Simulado</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="review-view" class="view-section">
+            <div class="review-header">
+                <h2>📋 Revisão do Simulado</h2>
+                <button class="btn btn-secondary" id="btn-close-review">⬅️ Voltar ao Simulado</button>
+            </div>
+            <div id="review-list">
+                <!-- Lista de questões revisadas via JS -->
+            </div>
+        </section>
 
     </main>
 
-    <!-- MODAL DE CONFIRMAÇÃO DE REINÍCIO -->
-    <div id="modal-reiniciar"
-        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 space-y-4">
-            <div class="flex items-center space-x-3 text-rose-600">
-                <div class="bg-rose-100 p-3 rounded-full">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                        </svg>
-                </div>
-                <h3 class="text-lg font-bold text-slate-900">Reiniciar Simulado?</h3>
-            </div>
-            <p class="text-sm text-slate-600 leading-relaxed">
-                Tem certeza que deseja reiniciar o simulado? Todo o seu progresso salvo (respostas, acertos e
-                estatísticas) será permanentemente apagado.
-            </p>
-            <div class="flex justify-end space-x-3 pt-2">
-                <button onclick="fecharModalReiniciar()"
-                    class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-xl transition">
-                    Cancelar
-                </button>
-                <button onclick="confirmarReiniciar()"
-                    class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-semibold text-sm rounded-xl shadow transition">
-                    Sim, Reiniciar
-                </button>
+    <div class="modal-overlay" id="reset-modal">
+        <div class="modal-card">
+            <h3 class="modal-title">Reiniciar Simulado?</h3>
+            <p class="modal-body">Tem certeza que deseja reiniciar o simulado? Todo o seu progresso e estatísticas
+                salvas serão apagados permanentemente.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="btn-modal-cancel">Cancelar</button>
+                <button class="btn btn-primary" style="background-color: var(--error);" id="btn-modal-confirm">Sim,
+                    Reiniciar</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE REVISÃO DE QUESTÕES -->
-    <div id="modal-revisao"
-        class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div
-            class="bg-white rounded-2xl max-w-5xl w-full h-[92vh] max-h-[92dvh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
-
-            <div class="bg-slate-900 text-white p-4 sm:p-5 flex items-center justify-between gap-3 border-b border-slate-800">
-                <div class="flex items-center space-x-2">
-                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
-                    <h3 class="text-base sm:text-lg font-bold">Mapa e Revisão das 60 Questões</h3>
-                </div>
-                <button onclick="fecharModalRevisao()"
-                    class="text-slate-400 hover:text-white p-1 rounded-lg transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" /></svg>
-                </button>
-            </div>
-
-            <!-- FILTROS -->
-            <div class="bg-slate-50 border-b border-slate-200 p-4 flex flex-wrap gap-2">
-                <button onclick="filtrarRevisao('todas')"
-                    class="btn-filtro px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white"
-                    id="flt-todas">Todas (60)</button>
-                <button onclick="filtrarRevisao('acertos')"
-                    class="btn-filtro px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
-                    id="flt-acertos">Acertos</button>
-                <button onclick="filtrarRevisao('erros')"
-                    class="btn-filtro px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
-                    id="flt-erros">Erros</button>
-                <button onclick="filtrarRevisao('pendentes')"
-                    class="btn-filtro px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
-                    id="flt-pendentes">Não Respondidas</button>
-            </div>
-
-            <!-- CONTEÚDO REVISÃO SCROLLABLE -->
-            <div id="lista-revisao" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 custom-scrollbar">
-                <!-- Injetado via Javascript -->
-            </div>
-
-            <div class="p-4 bg-slate-100 border-t border-slate-200 flex justify-end">
-                <button onclick="fecharModalRevisao()"
-                    class="px-6 py-2.5 bg-slate-900 text-white font-semibold text-sm rounded-xl hover:bg-slate-800 transition">
-                    Fechar Revisão
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT PRINCIPAL -->
     <script>
-        /* ==========================================================================
-           BANCO COMPLETO DE 60 QUESTÕES BASEADO EXCLUSIVAMENTE NOS PDFs ANEXADOS
-           ========================================================================== */
-        const questoes = [{
+        /**
+         * BANCO DE DADOS COMPLETO COM EXATAMENTE 40 QUESTÕES OBJETIVAS
+         * Baseado estritamente no documento PDF "Revisão TGP - AV1".
+         * Gabarito distribuído estrategicamente: 10 A | 10 B | 10 C | 10 D.
+         */
+        const QUESTOES = [{
                 id: 1,
-                nivel: "facil",
-                pergunta: "O ordenamento jurídico brasileiro veda, em regra, a autotutela como forma de exercício arbitrário das próprias razões (conforme o art. 345 do Código Penal). No entanto, o próprio ordenamento admite hipóteses excepcionais e delimitadas. De acordo com o conteúdo programático de Teoria Geral do Processo, assinale a alternativa que indica uma manifestação legítima e juridicamente limitada da autotutela:",
+                nivel: "Fácil",
+                topico: "Meios de Solução",
+                pergunta: "A autotutela é a forma mais remota de solução de conflitos. No ordenamento jurídico brasileiro atual, como a autotutela é tratada?",
                 alternativas: {
-                    A: "O direito de greve, como instrumento coletivo de pressão exercido nos limites constitucionais e legais.",
-                    B: "A apreensão privada coercitiva de veículo por credor inadimplido sem intervenção judicial.",
-                    C: "A alteração unilateral do contrato de aluguel pelo locador sem anuência do inquilino.",
-                    D: "A execução privada compulsória de alimentos sem título executivo homologado."
+                    A: "É a regra geral para a solução de litígios no direito contemporâneo.",
+                    B: "É excepcional e juridicamente limitada, sendo tipificada como crime no art. 345 do CP, salvo raras exceções legais.",
+                    C: "É estimulada pelo Código de Processo Civil como primeira alternativa antes de ingressar com ação.",
+                    D: "Foi totalmente banida, não existindo qualquer exemplo legal de sua ocorrência no ordenamento."
                 },
-                resposta: "A",
-                explicacao: "A regra geral no Estado Democrático de Direito é a proibição do exercício arbitrário das próprias razões (art. 345, CP). Excepcionalmente, a lei autoriza formas delimitadas de autotutela, como o direito de greve (mencionado no material como instrumento coletivo de pressão exercido nos limites legais)."
+                resposta: "B",
+                explicacao: "Conforme o material de estudo, a autotutela é excepcional e juridicamente limitada. O art. 345 do Código Penal pune o exercício arbitrário das próprias razões, admitindo-se a autotutela apenas em casos excepcionais e dentro dos limites constitucionais e legais (como a greve e o desforço possessório imediato)."
             },
             {
                 id: 2,
-                nivel: "facil",
-                pergunta: "A autocomposição abrange métodos consensuais de solução de litígios, tais como a conciliação e a mediação (Art. 165, §§ 2º e 3º, CPC). De acordo com a técnica e a disciplina legal desses institutos, assinale a afirmativa correta em relação ao CONCILIADOR:",
+                nivel: "Fácil",
+                topico: "Meios de Solução",
+                pergunta: "Em relação às formas de solução dos conflitos na Teoria Geral do Processo, assinale a opção que indica a característica essencial da heterocomposição:",
                 alternativas: {
-                    A: "Sua função limita-se exclusivamente a restabelecer a comunicação, sendo-lhe expressamente vedado propor soluções.",
-                    B: "Atua preferencialmente nos litígios em que houver vínculo prévio entre as partes, como no Direito de Família.",
-                    C: "Possui uma participação mais ativa na negociação, podendo sugerir soluções para o litígio, atuando preferencialmente quando NÃO houver vínculo anterior entre as partes.",
-                    D: "Atua como juiz privado imparcial que impõe uma sentença arbitral definitiva às partes."
+                    A: "A solução é construída exclusivamente pelas próprias partes sem qualquer intervenção de terceiros.",
+                    B: "Ocorre a imposição da força por uma das partes sobre a outra sem amparo em normas vigentes.",
+                    C: "Um terceiro atua apenas facilitando o diálogo e a comunicação entre as partes, sem poder decisório.",
+                    D: "Um terceiro imparcial define a solução do conflito de forma vinculante."
                 },
-                resposta: "C",
-                explicacao: "Nos termos do art. 165, § 2º do CPC, o conciliador atua preferencialmente nos casos em que NÃO houver vínculo anterior entre as partes, possui participação mais ativa e pode sugerir soluções para o litígio (diferenciando-se do mediador, que facilita a comunicação em conflitos com vínculo prévio e não propõe soluções)."
+                resposta: "D",
+                explicacao: "Na heterocomposição, a solução do conflito é definida por um terceiro imparcial. São exemplos característicos a jurisdição estatal prestada pelo Poder Judiciário e a arbitragem."
             },
             {
                 id: 3,
-                nivel: "facil",
-                pergunta: "A arbitragem é qualificada na Teoria Geral do Processo como um mecanismo heterocompositivo e integradamente pertencente ao modelo de Justiça Multiportas (jurisdição privada). Segundo a Lei nº 9.307/1996 e as normas aplicáveis, a arbitragem pode ser utilizada por:",
+                nivel: "Fácil",
+                topico: "Conciliação x Mediação",
+                pergunta: "De acordo com o art. 165 do CPC, a conciliação e a mediação diferenciam-se técnica e preferencialmente. Assinale a afirmativa correta sobre a conciliação:",
                 alternativas: {
-                    A: "Quaisquer pessoas, inclusive incapazes, para solucionar litígios de direitos indisponíveis.",
-                    B: "Pessoas capazes para solucionar litígios relativos a direitos patrimoniais disponíveis.",
-                    C: "Apenas órgãos estatais em matéria estritamente de Direito Penal.",
-                    D: "Servidores públicos com o fim de modificar penalidades disciplinares sem convenção prévia."
+                    A: "O conciliador atua preferencialmente quando não houver vínculo anterior e pode sugerir soluções para o litígio.",
+                    B: "O conciliador deve limitar-se a restaurar a comunicação, sendo expressamente proibido de apresentar sugestões.",
+                    C: "O conciliador atua obrigatoriamente apenas nos casos em que existir vínculo familiar prévio entre os litigantes.",
+                    D: "O conciliador substitui a vontade das partes e profere uma sentença arbitral definitiva."
                 },
-                resposta: "B",
-                explicacao: "Conforme a Lei nº 9.307/1996 e o material de estudo, a arbitragem é forma heterocompositiva de jurisdição privada utilizável por pessoas capazes para dirimir litígios relativos a direitos patrimoniais disponíveis."
+                resposta: "A",
+                explicacao: "Nos termos do art. 165, §2º, do CPC, o conciliador atua preferencialmente nos casos em que não houver vínculo anterior entre as partes e pode sugerir soluções para o litígio. Lembre-se do macete: Conciliação = pode sugerir."
             },
             {
                 id: 4,
-                nivel: "facil",
-                pergunta: "No âmbito da heterocomposição, a jurisdição estatal contenciosa atua como uma técnica estatal de pacificação social. Essa atuação do Estado-Juiz sobre a vontade dos litigantes é caracterizada essencialmente por:",
+                nivel: "Médio",
+                topico: "Conciliação x Mediação",
+                pergunta: "Em um conflito envolvendo dissolução de sociedade conjugal com longo histórico de relacionamento prévio, o CPC (art. 165, §3º) recomenda a atuação do mediador. Nessa hipótese, o mediador deve:",
                 alternativas: {
-                    A: "Voluntariedade pura, provisoriedade permanente e informalidade sumária.",
-                    B: "Autotutela, autocomposição assistida e transação compulsória.",
-                    C: "Irrevogabilidade simples, facilitação de diálogo e isenção de honorários.",
-                    D: "Substitutividade, definitividade e imperatividade."
+                    A: "Impor uma proposta coercitiva de divisão patrimonial para encerrar o processo rapidamente.",
+                    B: "Apresentar opções de acordo prontas elaboradas por sua própria iniciativa.",
+                    C: "Auxiliar na compreensão dos interesses e restabelecer a comunicação entre as partes, sem propor soluções.",
+                    D: "Atuar como julgador privado proferindo decisão vinculante nos autos."
                 },
-                resposta: "D",
-                explicacao: "Conforme o conteúdo programático (item 1.2.1 da Ementa de TGP), a jurisdição estatal contenciosa caracteriza-se formalmente pelas notas de substitutividade (o Estado substitui a vontade das partes), definitividade (coisa julgada) e imperatividade (força coercitiva da decisão)."
+                resposta: "C",
+                explicacao: "Segundo o art. 165, §3º, do CPC, o mediador atua preferencialmente nas causas em que houver vínculo anterior e auxilia os interessados a compreender os interesses e restabelecer a comunicação, sem propor soluções diretamente."
             },
             {
                 id: 5,
-                nivel: "medio",
-                pergunta: "A desmaterialização da justiça traduz-se no avanço do uso da tecnologia na resolução de conflitos, destacando-se as plataformas de Online Dispute Resolution (ODR). Essas plataformas atuam prioritariamente na:",
+                nivel: "Fácil",
+                topico: "Lei da Arbitragem",
+                pergunta: "A arbitragem (Lei nº 9.307/1996) integra a Justiça Multiportas como jurisdição privada. Para que um litígio possa ser submetido à arbitragem, o ordenamento exige que:",
                 alternativas: {
-                    A: "Resolução de conflitos de consumo em massa em ambientes virtuais de maneira célere e desmaterializada.",
-                    B: "Substituição obrigatória de todas as audiências criminais do Poder Judiciário.",
-                    C: "Supressão das garantias constitucionais do contraditório e da ampla defesa.",
-                    D: "Anulação de precedentes judiciais vinculantes editados pelo Supremo Tribunal Federal."
+                    A: "Verse obrigatoriamente sobre direitos indisponíveis de incapazes.",
+                    B: "As partes sejam pessoas capazes e o conflito verse sobre direitos patrimoniais disponíveis.",
+                    C: "Haja autorização e parecer prévio favorável do Ministério Público.",
+                    D: "Trate-se de controvérsia de direito penal público incondicionado."
                 },
-                resposta: "A",
-                explicacao: "O item 1.2.3 do programa de estudos define o fenômeno da ODR (Online Dispute Resolution) como técnica voltada à desmaterialização da justiça e resolução eficiente de conflitos de consumo em massa no ambiente digital."
+                resposta: "B",
+                explicacao: "A Lei nº 9.307/1996 estabelece expressamente que as pessoas capazes de contratar podem valer-se da arbitragem para dirimir conflitos relativos a direitos patrimoniais disponíveis."
             },
             {
                 id: 6,
-                nivel: "facil",
-                pergunta: "A dogmática jurídica estabelece a distinção conceitual entre o Direito Material (Substancial) e o Direito Processual. A respeito dessa relação, consoante a jurisprudência consolidada do STJ (REsp 1.770.863/2020), o Direito Processual é:",
+                nivel: "Médio",
+                topico: "Lei da Arbitragem",
+                pergunta: "A convenção de arbitragem é o gênero do qual são espécies a cláusula compromissória e o compromisso arbitral. Assinale a alternativa correta quanto à diferença entre ambas:",
                 alternativas: {
-                    A: "Mero apêndice sem autonomia científica, subordinado inteiramente às regras do Direito Civil.",
-                    B: "Identificado ontologicamente como norma de conduta primária diretamente aplicável ao tráfego social.",
-                    C: "Incapaz de gerar garantias aos cidadãos, atuando exclusivamente como rito administrativo.",
-                    D: "Um ramo jurídico autônomo, mas também um instrumento específico de atuação a serviço do direito material para garantir sua efetividade."
+                    A: "A cláusula compromissória é estipulada no contrato antes do surgimento do conflito, enquanto o compromisso arbitral é firmado após o litígio instaurado.",
+                    B: "O compromisso arbitral é inserido preventivamente na minuta do contrato, enquanto a cláusula surge após a lide.",
+                    C: "Ambas dependem de homologação prévia por um juiz de direito estadual para que tenham validade.",
+                    D: "A cláusula compromissória destina-se unicamente a processos trabalhistas individuais."
                 },
-                resposta: "D",
-                explicacao: "Conforme acórdão do STJ citado no material (Informativo 673, REsp 1.770.863/2020), o Direito Processual é, a um só tempo, um ramo jurídico autônomo e um instrumento a serviço do Direito Material para assegurar-lhe efetividade."
+                resposta: "A",
+                explicacao: "A cláusula compromissória é a promessa escrita em contrato para submeter futuros litígios à arbitragem. O compromisso arbitral é o acordo celebrado pelas partes quando o conflito concreto já surgiu."
             },
             {
                 id: 7,
-                nivel: "medio",
-                pergunta: "A evolução metodológica do Direito Processual é dividida pela doutrina em quatro grandes fases históricas. Assinale a alternativa que indica a sequência cronológica CORRETA dessa evolução:",
+                nivel: "Fácil",
+                topico: "Lei da Arbitragem",
+                pergunta: "Nos termos da Lei nº 9.307/1996, a respeito dos efeitos jurídicos da sentença arbitral proferida pelo árbitro, é correto afirmar que:",
                 alternativas: {
-                    A: "Neoprocessualismo → Praxismo → Processualismo Científico → Instrumentalismo.",
-                    B: "Praxismo → Processualismo Científico → Instrumentalismo → Neoprocessualismo.",
-                    C: "Instrumentalismo → Praxismo → Neoprocessualismo → Processualismo Científico.",
-                    D: "Processualismo Científico → Neoprocessualismo → Praxismo → Instrumentalismo."
+                    A: "Necessita obrigatoriamente de homologação pelo Poder Judiciário para surtir efeitos.",
+                    B: "Possui natureza meramente opinativa, não vinculando as partes contratantes.",
+                    C: "Pode ser ignorada pelas partes, pois carece de força vinculante no direito brasileiro.",
+                    D: "Produz os mesmos efeitos da sentença judicial e, sendo condenatória, constitui título executivo judicial."
                 },
-                resposta: "B",
-                explicacao: "Conforme o material de revisão e os slides de TGP, a evolução histórica do processo obedece à seguinte sequência: 1. Praxismo (Sincretista/Procedimentalista) → 2. Processualismo Científico → 3. Instrumentalismo → 4. Neoprocessualismo (Formalismo ético ou valorativo)."
+                resposta: "D",
+                explicacao: "A sentença arbitral produz, entre as partes e seus sucessores, os mesmos efeitos da sentença proferida pelos órgãos do Poder Judiciário e, sendo condenatória, constitui título executivo judicial."
             },
             {
                 id: 8,
-                nivel: "facil",
-                pergunta: "A fase do Processualismo Científico marcou o nascimento do Direito Processual como ramo autônomo e dotado de cientificidade. Historicamente, essa fase é mundialmente associada aos estudos pioneiros de:",
+                nivel: "Fácil",
+                topico: "Direito Material x Processual",
+                pergunta: "A doutrina processualista diferencia o Direito Material do Direito Processual. Assinale a alternativa que define adequadamente o Direito Material:",
                 alternativas: {
-                    A: "Friedrich Carl von Savigny.",
-                    B: "Giuseppe Chiovenda.",
-                    C: "Oskar Von Bülow.",
-                    D: "Francesco Carnelutti."
+                    A: "Compreende o conjunto de regras estritamente operacionais que disciplinam os prazos do recurso de apelação.",
+                    B: "Consiste no ramo voltado unicamente para a divisão de competências administrativas dos tribunais.",
+                    C: "Abrange o conjunto de direitos, deveres e relações jurídicas tuteladas pelo ordenamento jurídico.",
+                    D: "É o instrumento utilizado pelas partes para movimentar a máquina judiciária."
                 },
                 resposta: "C",
-                explicacao: "O material de apoio associa expressamente a fase do Processualismo Científico à obra e aos estudos do jurista Oskar Von Bülow."
+                explicacao: "O Direito Material/Substancial disciplina os direitos, deveres e relações jurídicas em si (ex.: Direito Civil, Penal, do Trabalho), enquanto o Direito Processual fornece os instrumentos para a sua efetivação."
             },
             {
                 id: 9,
-                nivel: "facil",
-                pergunta: "Nos termos do art. 1º do Código de Processo Civil de 2015, o processo civil brasileiro obedece a um modelo constitucionalmente orientado. O referido dispositivo preconiza que o processo civil será ordenado, disciplinado e interpretado:",
+                nivel: "Médio",
+                topico: "Direito Material x Processual",
+                pergunta: "O Direito Processual é considerado autônomo e, ao mesmo tempo, instrumental. O caráter instrumental do processo significa que:",
                 alternativas: {
-                    A: "Conforme os valores e as normas fundamentais estabelecidos na Constituição da República Federativa do Brasil.",
-                    B: "Seguindo estritamente a discricionariedade subjetiva do magistrado sem vinculação constitucional.",
-                    C: "De forma isolada do texto constitucional, dada a total independência formal do Código de Processo Civil.",
-                    D: "Unicamente com base nas portarias internas editadas pelas Corregedorias Gerais de Justiça."
+                    A: "O processo é um fim em si mesmo, devendo a forma prevalecer sobre o direito perseguido.",
+                    B: "Seus institutos e procedimentos servem como meio para a concretização e efetividade do direito material.",
+                    C: "O direito processual não possui princípios próprios e depende das regras do Código Civil.",
+                    D: "As garantias constitucionais podem ser afastadas em nome do cumprimento do rito."
                 },
-                resposta: "A",
-                explicacao: "O art. 1º do CPC estipula textualmente que 'o processo civil será ordenado, disciplinado e interpretado conforme os valores e as normas fundamentais estabelecidos na Constituição da República'."
+                resposta: "B",
+                explicacao: "A instrumentalidade do processo significa que ele não é um fim em si mesmo, mas sim um instrumento ético e técnico destinado a dar efetividade e concretização ao direito material tutelado."
             },
             {
                 id: 10,
-                nivel: "facil",
-                pergunta: "O conceito contemporâneo de 'Justiça Multiportas' prega a convivência de múltiplos métodos de solução adequada de litígios. No âmbito da jurisdição privada presente no modelo multiportas, sobressai-se:",
+                nivel: "Fácil",
+                topico: "Evolução do Direito Processual",
+                pergunta: "A Teoria Geral do Processo identifica quatro fases fundamentais na evolução histórica do estudo do Direito Processual. Assinale a opção que indica a sequência cronológica correta:",
                 alternativas: {
-                    A: "A Vara da Fazenda Pública Estadual.",
-                    B: "A Arbitragem.",
-                    C: "O Tribunal de Justiça Militar.",
-                    D: "O Conselho Tutelar."
+                    A: "Praxismo → Processualismo Científico → Instrumentalismo → Neoprocessualismo.",
+                    B: "Processualismo Científico → Praxismo → Neoprocessualismo → Instrumentalismo.",
+                    C: "Instrumentalismo → Praxismo → Processualismo Científico → Neoprocessualismo.",
+                    D: "Neoprocessualismo → Instrumentalismo → Processualismo Científico → Praxismo."
                 },
-                resposta: "B",
-                explicacao: "Conforme o esquema do material (Justiça Multiportas), a jurisdição divide-se em Jurisdição Pública (órgãos do Judiciário) e Jurisdição Privada (Arbitragem), ao lado da conciliação e mediação."
+                resposta: "A",
+                explicacao: "A sequência histórica da evolução da ciência processual é: 1. Praxismo (sincretista/procedimentalista) → 2. Processualismo Científico (Bülow) → 3. Instrumentalismo → 4. Neoprocessualismo (formalismo valorativo)."
             },
             {
                 id: 11,
-                nivel: "medio",
-                pergunta: "O Princípio do Devido Processo Legal (art. 5º, LIV, CF) funciona como pilar fundamental de todo o ordenamento jurídico. A doutrina desdobra o devido processo legal em duas dimensões. A dimensão MATERIAL (substantiva) visa garantir:",
+                nivel: "Fácil",
+                topico: "Evolução do Direito Processual",
+                pergunta: "A primeira fase da evolução histórica do estudo do processo, denominada Praxismo, também é conhecida na doutrina por outras nomenclaturas. São sinônimos da fase do Praxismo:",
                 alternativas: {
-                    A: "O cumprimento cego de etapas e prazos formais sem avaliar a justiça da decisão.",
-                    B: "A celeridade absoluta mediante supressão de fases probatórias.",
-                    C: "A faculdade de criar juízos pós-fato para julgar litígios complexos.",
-                    D: "Proporcionalidade, razoabilidade, vedação ao arbítrio e o direito a um resultado substancialmente justo."
+                    A: "Formalismo ético, valorativo e neoprocessual.",
+                    B: "Fase científica, autônoma e dogmática.",
+                    C: "Fase teleológica e de efetividade ampla.",
+                    D: "Fase sincretista, imanentista ou procedimentalista."
                 },
                 resposta: "D",
-                explicacao: "O desdobramento formal garante rito, prazos e etapas; já o sentido material (substantivo) garante a justiça da decisão, razoabilidade, proporcionalidade e vedação ao arbítrio estatista."
+                explicacao: "Conforme a síntese do material, o Praxismo é também qualificado como sincretista, imanentista ou procedimentalista, período em que não havia clara separação entre direito material e processual."
             },
             {
                 id: 12,
-                nivel: "facil",
-                pergunta: "A inércia da jurisdição é retratada pela máxima *nemo iudex sine actore* (art. 2º do CPC). Essa regra estrutural significa que:",
+                nivel: "Fácil",
+                topico: "Evolução do Direito Processual",
+                pergunta: "O marco teórico da fase do Processualismo Científico é a sistematização da autonomia do Direito Processual e da relação jurídica processual. Esse avanço é associado historicamente ao jurista:",
                 alternativas: {
-                    A: "O juiz deve dar início ex officio a todas as ações cíveis para tutelar direitos individuais.",
-                    B: "O processo civil é conduzido privadamente pelas partes sem qualquer intervenção oficial do Estado.",
-                    C: "O Estado-Juiz detém o monopólio da força, mas aguarda a provocação da parte; contudo, uma vez instaurado, o processo desenvolve-se por impulso oficial.",
-                    D: "As decisões judiciais não produzem efeitos vinculantes para os litigantes."
+                    A: "Eduardo Couture.",
+                    B: "Francesco Carnelutti.",
+                    C: "Oskar Von Bülow.",
+                    D: "Giuseppe Chiovenda."
                 },
                 resposta: "C",
-                explicacao: "Conforme o art. 2º do CPC e os esquemas do material, o Estado-Juiz aguarda a provocação inicial da parte (Inércia), mas uma vez acionado, a engrenagem avança por impulso oficial."
+                explicacao: "O Processualismo Científico é associado a Oskar Von Bülow (com sua obra de 1868 sobre as exceções e pressupostos processuais), responsável pela construção científica e autônoma do Direito Processual."
             },
             {
                 id: 13,
-                nivel: "medio",
-                pergunta: "Apesar de a inércia ser a regra da jurisdição, o ordenamento jurídico admite exceções legítimas de atuação *ex officio* do julgador justificadas por interesses maiores. Assinale a opção que indica uma exceção admitida no material de estudos:",
+                nivel: "Médio",
+                topico: "Evolução do Direito Processual",
+                pergunta: "O Neoprocessualismo representa a etapa contemporânea da ciência processual. Uma das principais características dessa fase é:",
                 alternativas: {
-                    A: "Adoção de medidas protetivas de urgência e correção de erros materiais.",
-                    B: "Redação coercitiva da petição inicial em nome do autor desacompanhado de patrono.",
-                    C: "Julgamento extra petita de pedidos não formulados nem implícitos.",
-                    D: "Produção de provas ilícitas em benefício exclusivo da acusação criminal."
+                    A: "O retorno ao praxismo medieval sem separação entre direito material e processo.",
+                    B: "O formalismo ético ou valorativo, pautado pelos valores constitucionais e direitos fundamentais.",
+                    C: "O culto sacralizado às formas processuais acima de qualquer valor de justiça.",
+                    D: "A desvinculação absoluta entre o Código de Processo Civil e a Constituição Federal."
                 },
-                resposta: "A",
-                explicacao: "Conforme exposto nos esquemas e no texto de revisão, as exceções à inércia justificadas por interesses maiores incluem controle de constitucionalidade, medidas protetivas de urgência e correção de erros materiais."
+                resposta: "B",
+                explicacao: "O Neoprocessualismo relaciona o processo aos valores constitucionais e direitos fundamentais, sendo também denominado formalismo ético ou valorativo."
             },
             {
                 id: 14,
-                nivel: "facil",
-                pergunta: "A garantia do Juiz Natural e a Imparcialidade (art. 5º, XXXVII e LIII, CF) visam assegurar o julgamento justo. Esse pilar constitucional proíbe expressamente:",
+                nivel: "Fácil",
+                topico: "CF e Processo",
+                pergunta: "O artigo 1º do Código de Processo Civil consagra a filtragem constitucional ao dispor expressamente que o processo civil será ordenado, disciplinado e interpretado conforme:",
                 alternativas: {
-                    A: "A criação de Varas Especializadas em Direito Agrário ou de Família.",
-                    B: "A criação ou utilização de Tribunais ou Juízos de Exceção (*post factum*).",
-                    C: "A interposição de recursos para a segunda instância judiciária.",
-                    D: "A distribuição aleatória e automatizada de processos nos tribunais."
+                    A: "Os valores e as normas fundamentais estabelecidos na Constituição da República Federativa do Brasil.",
+                    B: "Os costumes locais e o livre arbítrio individual de cada julgador.",
+                    C: "Os regimentos internos dos Tribunais de Justiça Estaduais em caráter exclusivo.",
+                    D: "As doutrinas procedimentais do século XIX."
                 },
-                resposta: "B",
-                explicacao: "O princípio do Juiz Natural veda tribunais de exceção (criados após os fatos) e exige que a competência seja pré-estabelecida por regras legais e objetivas anteriores ao fato."
+                resposta: "A",
+                explicacao: "Art. 1º do CPC: 'O processo civil será ordenado, disciplinado e interpretado conforme os valores e as normas fundamentais estabelecidos na Constituição da República Federativa do Brasil, observando-se as disposições deste Código.'"
             },
             {
                 id: 15,
-                nivel: "medio",
-                pergunta: "Considere a jurisprudência sumulada do Supremo Tribunal Federal (Súmula 704). De acordo com a referida Súmula, a atração por continência ou conexão do processo ao foro por prerrogativa de função de um dos denunciados:",
+                nivel: "Fácil",
+                topico: "Justiça Multiportas",
+                pergunta: "O conceito moderno de Justiça Multiportas propõe uma reorganização do sistema de solução de litígios. Esse modelo caracteriza-se por:",
                 alternativas: {
-                    A: "Viola a garantia constitucional do juiz natural dos demais corréus sem foro por prerrogativa.",
-                    B: "Anula obrigatoriamente a denúncia oferecida pelo Ministério Público.",
-                    C: "NÃO viola as garantias do juiz natural.",
-                    D: "Exige o desmembramento automático e compulsório de todos os processos civis."
+                    A: "Exigir a obrigatoriedade da via judicial estatal para 100% dos conflitos da sociedade.",
+                    B: "Proibir o uso da arbitragem em disputas de natureza contratual.",
+                    C: "Permitir apenas a conciliação realizada perante cartórios extrajudiciais.",
+                    D: "Oferecer diferentes mecanismos adequados para a solução dos conflitos (judiciais e extrajudiciais)."
                 },
-                resposta: "C",
-                explicacao: "A Súmula 704 do STF dispõe expressamente: 'Não viola as garantias do juiz natural a atração por continência ou conexão do processo ao foro por prerrogativa de função de um dos denunciados'."
+                resposta: "D",
+                explicacao: "A Justiça Multiportas representa a coexistência de diferentes mecanismos de solução de controvérsias (jurisdição estatal, arbitragem, conciliação e mediação), permitindo a escolha da via mais adequada para cada caso."
             },
             {
                 id: 16,
-                nivel: "medio",
-                pergunta: "O Princípio do Contraditório (art. 5º, LV, CF) superou a visão puramente formal do passado. No modelo constitucional contemporâneo, a fórmula que expressa a dimensão substancial do contraditório é:",
+                nivel: "Médio",
+                topico: "Justiça Multiportas",
+                pergunta: "Com base na organização da tutela jurisdicional no Brasil apresentada no material de revisão, a jurisdição diferencia-se em pública e privada. É correto afirmar que:",
                 alternativas: {
-                    A: "Citação + Confissão = Celeridade Processual.",
-                    B: "Petição + Sentença = Trânsito em Julgado Automático.",
-                    C: "Acusação + Punição = Efetividade Jurisdicional.",
-                    D: "Informação + Reação = Poder de Influência."
+                    A: "A jurisdição privada é exercida pelos juízes de direito estaduais.",
+                    B: "O STF integra a estrutura da jurisdição privada para arbitragens internacionais.",
+                    C: "A jurisdição pública é exercida por órgãos do Poder Judiciário, enquanto a arbitragem é tratada como jurisdição privada.",
+                    D: "A Justiça especializada abrange unicamente a Justiça Estadual e a Federal."
                 },
-                resposta: "D",
-                explicacao: "O material destaca expressamente o trinômio do contraditório substancial: Informação + Reação = Poder de Influência na convicção final do magistrado."
+                resposta: "C",
+                explicacao: "Conforme o material de estudo, a jurisdição pública é prestada pelos órgãos do Poder Judiciário (Justiça comum e especializada, tendo o STF no topo para questões constitucionais), enquanto a arbitragem é tratada como jurisdição privada."
             },
             {
                 id: 17,
-                nivel: "medio",
-                pergunta: "O art. 10 do CPC consagra o Princípio da Vedação à Decisão Surpresa. Consoante essa norma fundamental, o juiz não pode decidir com base em fundamento a respeito do qual não se tenha dado às partes oportunidade de se manifestar:",
+                nivel: "Fácil",
+                topico: "Ação - Interesse e Legitimidade",
+                pergunta: "A ação é o direito subjetivo de provocar a atividade jurisdicional. Conforme preceitua o artigo 17 do Código de Processo Civil, para postular em juízo é preciso ter:",
                 alternativas: {
-                    A: "Ainda que se trate de matérias apreciáveis de ofício.",
-                    B: "Salvo em casos que envolvam direito de família ou incapacidade relativa.",
-                    C: "Exceto se a decisão for desfavorável a ambas as partes litigantes.",
-                    D: "Apenas se o autor formular pedido de reserva de jurisdição na inicial."
+                    A: "Capacidade financeira e depósito prévio de caução.",
+                    B: "Interesse e legitimidade.",
+                    C: "Autorização prévia do réu.",
+                    D: "Patrimônio disponível e advogado público."
                 },
-                resposta: "A",
-                explicacao: "O art. 10 do CPC prevê expressamente que o juiz não pode decidir com base em fundamento sobre o qual as partes não puderam se manifestar, 'ainda que se trate de matéria sobre a qual deva decidir de ofício'."
+                resposta: "B",
+                explicacao: "Nos termos do art. 17 do CPC: 'Para postular em juízo é necessário ter interesse e legitimidade.'"
             },
             {
                 id: 18,
-                nivel: "medio",
-                pergunta: "Em situações excepcionais, admite-se o chamado Contraditório Diferido (ou postergado), em que a oitiva prévia da parte contrária comprometeria a própria efetividade da tutela. Assinale o exemplo citado no material para essa hipótese:",
+                nivel: "Fácil",
+                topico: "Ação - Interesse e Legitimidade",
+                pergunta: "O interesse processual é requisito indispensável para a apreciação do mérito. De acordo com a doutrina referenciada no material, o interesse de agir traduz-se no binômio:",
                 alternativas: {
-                    A: "Instauração de Processo Administrativo Disciplinar sem notificação.",
-                    B: "A extinção definitiva do processo de conhecimento por falta de preparo.",
-                    C: "Medidas de interceptação telefônica, em que o sigilo inicial é essencial.",
-                    D: "A prolação de sentença condenatória cível em audiência sem advogado."
+                    A: "Necessidade e utilidade da tutela jurisdicional pretendida.",
+                    B: "Conveniência e gratuidade do processo.",
+                    C: "Celeridade e oportunidade do direito pleiteado.",
+                    D: "Moralidade e razoabilidade do autor."
                 },
-                resposta: "C",
-                explicacao: "O material aponta expressamente as interceptações telefônicas e tutelas cautelares de urgência como exemplos clássicos de contraditório diferido, onde o sigilo prévio é imprescindível para a eficácia da medida."
+                resposta: "A",
+                explicacao: "O interesse processual relaciona-se à necessidade de recorrer ao Judiciário para obter o bem da vida e à utilidade do provimento jurisdicional buscado para sanar a lesão ou ameaça a direito."
             },
             {
                 id: 19,
-                nivel: "facil",
-                pergunta: "A Ampla Defesa (art. 5º, LV, CF) desdobra-se em defesa técnica e autodefesa. No âmbito do Poder Judiciário, a regra geral quanto à defesa técnica exige que ela seja:",
+                nivel: "Médio",
+                topico: "Ação - Interesse e Legitimidade",
+                pergunta: "O artigo 18 do CPC fixa a regra geral referente à legitimidade extraordinária (substituição processual). Assinale a afirmativa que expressa corretamente o comando do dispositivo:",
                 alternativas: {
-                    A: "Dispensável em qualquer ação perante a Justiça Comum e Tribunais Superiores.",
-                    B: "Obrigatória, prestada por advogado habilitado ou Defensor Público.",
-                    C: "Exercida obrigatoriamente pelo próprio réu sem interferência de terceiros.",
-                    D: "Subordinada ao prévio pagamento de taxa judiciária suplementar."
+                    A: "É permitido pleitear direito alheio em nome próprio em qualquer hipótese independentemente de lei.",
+                    B: "Ninguém pode defender direito próprio em juízo sem expressa anuência do réu.",
+                    C: "Apenas entidades da administração pública possuem legitimidade extraordinária no Brasil.",
+                    D: "Ninguém poderá pleitear direito alheio em nome próprio, salvo quando autorizado pelo ordenamento jurídico."
                 },
-                resposta: "B",
-                explicacao: "No Poder Judiciário, como regra, a defesa técnica é obrigatória e deve ser conduzida por profissional habilitado (advogado ou defensor público), assegurando a paridade de armas."
+                resposta: "D",
+                explicacao: "Art. 18 do CPC: 'Ninguém poderá pleitear direito alheio em nome próprio, salvo quando autorizado pelo ordenamento jurídico.' Essa é a regra da legitimidade ordinária com a ressalva da extraordinária."
             },
             {
                 id: 20,
-                nivel: "medio",
-                pergunta: "A Súmula Vinculante nº 5 do Supremo Tribunal Federal estabelece uma exceção relevante sobre a indispensabilidade de patrono. Segundo o enunciado dessa Súmula Vinculante:",
+                nivel: "Médio",
+                topico: "Princípio do Devido Processo Legal",
+                pergunta: "O princípio do Devido Processo Legal (Art. 5º, LIV, CF) possui dimensão formal e material. A dimensão material (substantiva) desse princípio atua assegurando:",
                 alternativas: {
-                    A: "A presença de advogado é obrigatória sob pena de nulidade em qualquer inquérito policial.",
-                    B: "O réu preso pode impetrar habeas corpus apenas se assistido por curador especial.",
-                    C: "A ausência de defesa técnica na execução penal gera perdão judicial da pena.",
-                    D: "A falta de defesa técnica por advogado no Processo Administrativo Disciplinar (PAD) NÃO ofende a Constituição."
+                    A: "Apenas o cumprimento dos prazos processuais estipulados em dias úteis.",
+                    B: "O recolhimento pontual das taxas judiciárias e custas iniciais.",
+                    C: "A justiça da decisão, a proporcionalidade, a razoabilidade e a vedação ao arbítrio.",
+                    D: "A realização obrigatória de sustentações orais presenciais."
                 },
-                resposta: "D",
-                explicacao: "Súmula Vinculante 5 STF: 'A falta de defesa técnica por advogado no processo administrativo disciplinar não ofende a Constituição'."
+                resposta: "C",
+                explicacao: "A dimensão formal diz respeito ao respeito ao rito e procedimentos. A dimensão material (ou substantiva) do devido processo legal volta-se ao conteúdo do julgado: justiça, proporcionalidade, razoabilidade e vedação ao arbítrio estatário."
             },
             {
                 id: 21,
-                nivel: "medio",
-                pergunta: "Analise a orientação do TJDFT (Acórdão 1685750) exposta no material. Na hipótese em que o réu opta pelo exercício do silêncio seletivo na audiência, o encerramento do ato pelo juiz sem permitir que a defesa lhe faça perguntas:",
+                nivel: "Fácil",
+                topico: "Princípio da Inércia",
+                pergunta: "O princípio da inércia da jurisdição determina que o Estado-Juiz, em regra, aguarda provocação (nemo iudex sine actore). Após devidamente provocado, qual o princípio que comanda o andamento do processo?",
                 alternativas: {
-                    A: "Representa a correta aplicação do dever de celeridade e impulso oficial.",
-                    B: "Configura flagrante cerceamento de defesa e violação da ampla defesa.",
-                    C: "Trata-se de conduta irrelevante que não admite arguição de nulidade.",
-                    D: "Gera a confissão ficta automática de todos os fatos narrados na denúncia."
+                    A: "Impulso oficial.",
+                    B: "Sobrestamento obrigatório.",
+                    C: "Inércia continuada.",
+                    D: "Revisão compulsória."
                 },
-                resposta: "B",
-                explicacao: "Conforme jurisprudência destacada (TJDFT - Ac. 1685750), o encerramento de audiência pelo juiz sem permitir que a defesa indague o réu que optou pelo silêncio seletivo configura cerceamento de defesa."
+                resposta: "A",
+                explicacao: "O processo começa por iniciativa da parte (inércia), mas se desenvolve por impulso oficial, cabendo ao juiz dar andamento aos atos processuais necessários à entrega da tutela jurisdicional."
             },
             {
                 id: 22,
-                nivel: "facil",
-                pergunta: "O Princípio da Duração Razoável do Processo (art. 5º, LXXVIII, CF) estabelece que o processo deve tramitar em tempo adequado. Consoante a doutrina do material, Celeridade NÃO se confunde com pressa, pois o objetivo da norma é:",
+                nivel: "Médio",
+                topico: "Princípio da Inércia",
+                pergunta: "Embora a inércia seja a regra da jurisdição, o ordenamento jurídico contempla exceções pontuais em que o magistrado pode atuar de ofício. Assinale a opção que indica uma exceção citada no material:",
                 alternativas: {
-                    A: "Evitar dilações indevidas sem sacrificar a dilação probatória essencial.",
-                    B: "Julgar os litígios em 24 horas, eliminando a fase instrutória e testemunhal.",
-                    C: "Suprimir o direito de interposição de embargos de declaração e apelação.",
-                    D: "Impedir a concessão de prazos em dobro para a Defensoria Pública."
+                    A: "Ajuizamento de ação de cobrança de aluguel privado sem pedido do locador.",
+                    B: "Concessão de medidas protetivas de urgência e correção de erros materiais.",
+                    C: "Execução forçada de contrato comercial sem provocação do credor.",
+                    D: "Propositura autônoma de ação de alimentos pelo juiz."
                 },
-                resposta: "A",
-                explicacao: "O processo não tem de ser célere a ponto de comprometer as garantias: o objetivo é evitar dilações indevidas sem sacrificar o direito fundamental à prova (dilação probatória essencial)."
+                resposta: "B",
+                explicacao: "O material destaca como exceções pontuais à inércia a atuação de ofício em matérias de interesses superiores, incluindo controle de constitucionalidade, medidas protetivas de urgência e correção de erros materiais."
             },
             {
                 id: 23,
-                nivel: "medio",
-                pergunta: "A Boa-fé Objetiva (art. 5º do CPC) institui um padrão ético de comportamento processual focado na conduta exterior do sujeito. Entre as vedações decorrentes da boa-fé objetiva, destaca-se a proibição do *venire contra factum proprium*, que consiste em:",
+                nivel: "Fácil",
+                topico: "Princípio do Juiz Natural",
+                pergunta: "O princípio do Juiz Natural (art. 5º, XXXVII e LIII, CF) é garantia de imparcialidade no julgamento. Esse princípio proíbe expressamente no Brasil:",
                 alternativas: {
-                    A: "Utilizar linguagem simples e recursos visuais em petições Iniciais.",
-                    B: "Ajuizar ação perante juízo territorialmente incompetente por erro justificável.",
-                    C: "Adotar comportamento contraditório que frustre a legítima expectativa da outra parte.",
-                    D: "Recorrer da sentença no último dia do prazo legal facultado pelo CPC."
+                    A: "A existência de varas especializadas em matérias de família ou falências.",
+                    B: "A criação de juizados especiais cíveis estaduais.",
+                    C: "O julgamento de recursos por câmaras especializadas em tribunais.",
+                    D: "A criação de tribunais ou juízos de exceção."
                 },
-                resposta: "C",
-                explicacao: "A proibição do *venire contra factum proprium* veda a conduta contraditória das partes, preservando a lealdade processual e a confiança nas relações jurídicas do processo."
+                resposta: "D",
+                explicacao: "O princípio do Juiz Natural garante que a competência do julgador seja definida por regras objetivas prévias à ocorrência dos fatos, proibindo expressamente os tribunais de exceção (criados post facto)."
             },
             {
                 id: 24,
-                nivel: "facil",
-                pergunta: "O art. 6º do Código de Processo Civil consagra o Modelo da Cooperação Processual. Por essa sistemática, o processo é encarado como uma comunidade de trabalho composta por autor, réu e juiz para alcançar:",
+                nivel: "Médio",
+                topico: "Princípio do Juiz Natural",
+                pergunta: "Em relação ao Juiz Natural e à jurisprudência consolidada dos Tribunais Superiores, a Súmula 704 do STF estabelece que:",
                 alternativas: {
-                    A: "A extinção sumária de metade das ações pendentes no tribunal.",
-                    B: "O deferimento automático de todos os pedidos formulados pela parte autora.",
-                    C: "A condenação irrecorrível do devedor inadimplente sem produção de provas.",
-                    D: "Uma decisão de mérito justa e efetiva em tempo razoável."
+                    A: "Viola o juiz natural o julgamento realizado por magistrado substituto convocado.",
+                    B: "É nula a sentença proferida por juízo especializado em falências.",
+                    C: "Não ofende o princípio do juiz natural a atração por continência ou conexão ao foro por prerrogativa de função de um dos denunciados.",
+                    D: "Fica vedada a reunião de processos conexos perante o mesmo juiz."
                 },
-                resposta: "D",
-                explicacao: "O art. 6º do CPC prescreve que todos os sujeitos do processo devem cooperar entre si para que se obtenha, em tempo razoável, decisão de mérito justa e efetiva."
+                resposta: "C",
+                explicacao: "Súmula 704 do STF: 'Não ofende o princípio do juiz natural a atração por continência ou conexão ao foro por prerrogativa de função de um dos denunciados.'"
             },
             {
                 id: 25,
-                nivel: "medio",
-                pergunta: "No âmbito da Cooperação Processual (art. 6º do CPC), a doutrina especifica deveres fundamentais incumbidos ao Magistrado. O dever pelo qual o juiz deve apontar falhas nas manifestações das partes para que sejam corrigidas chama-se:",
+                nivel: "Fácil",
+                topico: "Princípio do Contraditório",
+                pergunta: "O princípio do contraditório (art. 5º, LV, CF) evoluiu de um conceito meramente formal para uma visão substancial. A fórmula que traduz o contraditório pleno contemporâneo é:",
                 alternativas: {
-                    A: "Dever de Auxílio.",
-                    B: "Dever de Consulta.",
-                    C: "Dever de Prevenção.",
-                    D: "Dever de Esclarecimento."
+                    A: "Notificação + Revelia.",
+                    B: "Informação + Reação + Poder de influência.",
+                    C: "Citação + Confissão ficta.",
+                    D: "Publicação + Prazo em dobro."
                 },
-                resposta: "C",
-                explicacao: "O Dever de Prevenção exige que o juiz aponte deficiências e falhas nas postulações para que as partes possam saná-las, evitando a invalidação prematura ou anulação do ato."
+                resposta: "B",
+                explicacao: "O contraditório moderno não se limita ao binômio 'informação + possibilidade de reação', exigindo também o 'poder de influência', ou seja, a oportunidade real de afetar o convencimento do julgador."
             },
             {
                 id: 26,
-                nivel: "medio",
-                pergunta: "O dever constitucional de Motivação das Decisões Judiciais (art. 93, IX, CF / art. 489, § 1º, CPC) atua como garantia contra o arbítrio. Nos termos do art. 489, § 1º do CPC, é considerada NÃO fundamentada a decisão que:",
+                nivel: "Médio",
+                topico: "Princípio do Contraditório",
+                pergunta: "O art. 10 do CPC veda categoricamente a 'decisão-surpresa'. Essa proibição significa que o juiz:",
                 alternativas: {
-                    A: "Enfrentar todos os argumentos deduzidos no processo capazes de infirmar a conclusão adotada.",
-                    B: "Se limitar à indicação, à reprodução ou à paráfrase de ato normativo, sem explicar sua relação com a causa.",
-                    C: "Citar precedentes judiciais vinculantes demonstrando a adequação aos fatos demonstrados.",
-                    D: "Indicar os fatos, o fundamento jurídico e a conclusão lógica aplicada ao litígio."
+                    A: "Não pode decidir com base em fundamento a respeito do qual não se deu às partes oportunidade de se manifestar, ainda que se trate de matéria cognoscível de ofício.",
+                    B: "É proibido de indeferir liminares de tutela de urgência sem ouvir previamente a parte ré.",
+                    C: "Deve obrigatoriamente realizar sustentação oral antes de qualquer julgamento monocrático.",
+                    D: "Só pode aplicar súmulas vinculantes se houver prévio pedido das partes na petição inicial."
                 },
-                resposta: "B",
-                explicacao: "Não basta citar a lei ou reproduzir artigo: o art. 489, § 1º, I do CPC considera não fundamentada a decisão que se limita à mera indicação ou paráfrase de ato normativo sem explicar sua relação com os fatos da causa."
+                resposta: "A",
+                explicacao: "Art. 10 do CPC: 'O juiz não pode decidir, em grau algum de jurisdição, com base em fundamento a respeito do qual não se tenha dado às partes oportunidade de se manifestar, ainda que se trate de matéria sobre a qual deva decidir de ofício.'"
             },
             {
                 id: 27,
-                nivel: "medio",
-                pergunta: "No Estudo de Caso do TJDFT (Acórdão 1885719) presente no material, o magistrado extinguiu prematuramente um processo de execução por não encontrar bens penhoráveis, sem antes intimar o credor para indicar bens. Essa decisão violou:",
+                nivel: "Médio",
+                topico: "Princípio do Contraditório",
+                pergunta: "O contraditório diferido (ou postergado) ocorre quando a oitiva prévia da parte contrária pode comprometer a eficácia da medida. Um exemplo prático citado no material é:",
                 alternativas: {
-                    A: "O contraditório, a vedação à decisão surpresa e o dever de cooperação processual.",
-                    B: "Unicamente o princípio do juiz natural e da inafastabilidade jurisdicional.",
-                    C: "A Súmula Vinculante 5 do Supremo Tribunal Federal e a Súmula 704 do STF.",
-                    D: "O princípio da inércia, pois cabia ao juiz promover de ofício a localização de bens."
+                    A: "A réplica do autor em ação monitória.",
+                    B: "A manifestação sobre laudo pericial já juntado aos autos.",
+                    C: "A apresentação de contestações em processos ordinários.",
+                    D: "A decretação de interceptações telefônicas."
                 },
-                resposta: "A",
-                explicacao: "Extinguir a execução sem intimção prévia frustra o direito do credor de indicar bens ou promover diligências, violando a cooperação, o contraditório e a vedação à decisão surpresa (art. 10, CPC)."
+                resposta: "D",
+                explicacao: "Em medidas sigilosas urgentes, como as interceptações telefônicas ou buscas e apreensões, o contraditório é diferido (postergado para momento posterior) para evitar o perecimento da prova e garantir a efetividade da medida."
             },
             {
                 id: 28,
-                nivel: "facil",
-                pergunta: "A Teoria Geral da Jurisdição estuda as características essenciais do poder estatal jurisdicional. Assinale a opção que apresenta CORRETAMENTE as características nucleares da função jurisdicional:",
+                nivel: "Fácil",
+                topico: "Princípio da Ampla Defesa",
+                pergunta: "A ampla defesa (art. 5º, LV, CF) desdobra-se em duas vertentes fundamentais. São elas:",
                 alternativas: {
-                    A: "Parcialidade, temporariedade administrativa e revogabilidade política.",
-                    B: "Delegabilidade irrestrita, informalidade sumária e transigência pecuniária.",
-                    C: "Unilateralidade voluntária, hierarquia privada e facultatividade formal.",
-                    D: "Inércia inicial, imparcialidade objetiva, substitutividade e coisa julgada material."
+                    A: "Defesa prévia e recurso compulsório.",
+                    B: "Defesa patrimonial e assistência social.",
+                    C: "Defesa técnica (por profissional habilitado) e autodefesa (versão dos fatos ou silêncio).",
+                    D: "Defesa oral e manifestação escrita obrigatória."
                 },
-                resposta: "D",
-                explicacao: "Conforme o item 2.1.1 da Ementa de TGP, as características nucleares da jurisdição são: inércia inicial, imparcialidade objetiva, substitutividade e formação de coisa julgada material."
+                resposta: "C",
+                explicacao: "A ampla defesa compreende a defesa técnica (prestada obrigatoriamente por advogado/defensor) e a autodefesa (direito do próprio acusado de apresentar sua versão ou exercer o direito ao silêncio)."
             },
             {
                 id: 29,
-                nivel: "facil",
-                pergunta: "O Princípio da Inafastabilidade do Controle Jurisdicional está positivado no art. 5º, XXXV da Constituição Federal. De acordo com esse preceito fundamental:",
+                nivel: "Médio",
+                topico: "Princípio da Ampla Defesa",
+                pergunta: "A respeito da ampla defesa e do direito administrativo disciplinar, a Súmula Vinculante nº 5 do STF possui o seguinte enunciado:",
                 alternativas: {
-                    A: "A lei só pode limitar o acesso à Justiça caso haja concordância prévia do réu.",
-                    B: "É obrigatório o esgotamento das vias administrativas em todos os tipos de litígios civis.",
-                    C: "A lei não excluirá da apreciação do Poder Judiciário lesão ou ameaça a direito.",
-                    D: "O Poder Judiciário pode recusar-se a julgar o caso por omissão ou obscuridade da lei."
+                    A: "É obrigatória a presença de advogado em todas as fases do processo administrativo disciplinar.",
+                    B: "A falta de defesa técnica por advogado no processo administrativo disciplinar não ofende a Constituição.",
+                    C: "O processo administrativo sem contestação escrita é nulo de pleno direito.",
+                    D: "Apenas defensores públicos podem atuar em PADs estaduais e federais."
                 },
-                resposta: "C",
-                explicacao: "O art. 5º, XXXV da CF estabelece expressamente a garantia do direito de ação: 'a lei não excluirá da apreciação do Poder Judiciário lesão ou ameaça a direito'."
+                resposta: "B",
+                explicacao: "Súmula Vinculante nº 5 do STF: 'A falta de defesa técnica por advogado no processo administrativo disciplinar não ofende a Constituição.'"
             },
             {
                 id: 30,
-                nivel: "facil",
-                pergunta: "O Poder Judiciário brasileiro organiza-se em ramo comum e ramos especializados. Integram a chamada Justiça Especializada os seguintes ramos jurisdicionais:",
+                nivel: "Médio",
+                topico: "Princípio da Ampla Defesa",
+                pergunta: "Em julgado do TJDFT citado no material de estudo sobre o exercício da ampla defesa e o silêncio seletivo do réu, considerou-se caracterizado o cerceamento de defesa quando:",
                 alternativas: {
-                    A: "Justiça Eleitoral, Justiça do Trabalho e Justiça Militar.",
-                    B: "Justiça Federal Ordinária e Justiça Estadual Comum.",
-                    C: "Tribunais de Contas e Ministérios Públicos Estaduais.",
-                    D: "Juizados Especiais Cíveis e Varas de Fazenda Pública."
+                    A: "A audiência é encerrada sem permitir que a defesa faça perguntas ao réu que optou pelo silêncio seletivo.",
+                    B: "O juiz indefere a oitiva de testemunhas não arroladas no prazo legal.",
+                    C: "O advogado do réu não comparece à audiência justificando motivo de saúde.",
+                    D: "O Ministério Público requer o aditamento da denúncia após a instrução."
                 },
                 resposta: "A",
-                explicacao: "Conforme o mapa estrutural do Judiciário presente nos slides, a Justiça Especializada é composta pelos ramos Eleitoral, Trabalhista e Militar; enquanto a Justiça Comum é composta pelos ramos Estadual e Federal."
+                explicacao: "O TJDFT decidiu que, mesmo que o réu opte pelo silêncio seletivo (respondendo apenas às perguntas de sua defesa), o encerramento prematuro da audiência impedindo os questionamentos da própria defesa gera nulidade por cerceamento de defesa."
             },
             {
                 id: 31,
-                nivel: "facil",
-                pergunta: "Na cúpula da estrutura do Poder Judiciário brasileiro encontra-se o Supremo Tribunal Federal (STF). A função precípua dos Ministros no STF é atuar em casos que envolvam:",
+                nivel: "Fácil",
+                topico: "Duração Razoável do Processo",
+                pergunta: "O princípio da Duração Razoável do Processo (art. 5º, LXXVIII, CF) busca evitar a mora judicial indevida. De acordo com a orientação do material, a celeridade processual:",
                 alternativas: {
-                    A: "Revisão exclusiva de provas em litígios possessórios privados.",
-                    B: "Julgamento primário de infrações disciplinares de advogados da OAB.",
-                    C: "Uniformização infraconstitucional de leis estaduais de trânsito.",
-                    D: "Lesão ou ameaça à Constituição Federal."
+                    A: "Exige o julgamento imediato da causa no mesmo dia da propositura.",
+                    B: "Autoriza o juiz a dispensar a fase probatória sempre que desejar encerrar a pauta.",
+                    C: "Significa que a pressa deve prevalecer sobre o devido processo legal.",
+                    D: "Não se confunde com pressa, devendo-se evitar demoras indevidas sem sacrificar a prova necessária."
                 },
                 resposta: "D",
-                explicacao: "O esquema gráfico do Judiciário assinala expressamente que o STF atua no topo do sistema constitucional guardando o texto da Constituição Federal em caso de lesão ou ameaça."
+                explicacao: "A celeridade processual não significa pressa desenfreada ou atropelo de garantias; o processo deve durar o tempo necessário para a adequada produção probatória e prestação de uma justiça de qualidade."
             },
             {
                 id: 32,
-                nivel: "facil",
-                pergunta: "O conceito dogmático de COMPETÊNCIA no âmbito do Direito Processual Civil é conceituado pela doutrina como:",
+                nivel: "Fácil",
+                topico: "Princípio da Boa-fé Objetiva",
+                pergunta: "O artigo 5º do CPC impõe o dever de boa-fé a todos os participantes do processo. A boa-fé objetiva processual traduz-se em:",
                 alternativas: {
-                    A: "A prerrogativa exclusiva das partes de eleger a legislação aplicável ao processo.",
-                    B: "A medida, o limite e a fração do exercício do poder jurisdicional deferida a um órgão específico.",
-                    C: "O poder ilimitado do julgador de avocar processos de qualquer tribunal do país.",
-                    D: "A capacidade jurídica das partes de estarem em juízo sem procurador habilitado."
+                    A: "Investigação dos sentimentos íntimos ou intenções secretas do litigante.",
+                    B: "Exigência de declaração sob pena de perjúrio em todas as petições.",
+                    C: "Um padrão ético de comportamento processual voltado à conduta objetivamente verificável.",
+                    D: "Uma regra aplicável exclusivamente à conduta do autor da demanda."
                 },
-                resposta: "B",
-                explicacao: "Dogmaticamente, a competência é a quantidade, a medida, o limite e a fração do exercício da jurisdição atribuída legalmente a um determinado órgão do Poder Judiciário."
+                resposta: "C",
+                explicacao: "A boa-fé objetiva é um padrão ético e de lealdade comportamental objetivamente aferível no processo, independentemente da análise da intenção psicológica íntima da parte."
             },
             {
                 id: 33,
-                nivel: "medio",
-                pergunta: "A fixação da competência jurisdicional realiza-se conforme critérios legais preestabelecidos. Enquadram-se como critérios de ordem OBJETIVA para distribuição da competência:",
+                nivel: "Médio",
+                topico: "Princípio da Boa-fé Objetiva",
+                pergunta: "A proibição do 'venire contra factum proprium', derivada do princípio da boa-fé objetiva no processo civil, veda:",
                 alternativas: {
-                    A: "Matéria, pessoa e valor da causa.",
-                    B: "Foro do domicílio e local do fato atinente ao litígio.",
-                    C: "Conveniência pessoal do julgador e grau de parentesco.",
-                    D: "Eleição privada de foro e contrato de adesão."
+                    A: "A interposição de recursos legalmente previstos contra decisões interlocutórias.",
+                    B: "O comportamento contraditório que descumpra legítimas expectativas criadas na outra parte.",
+                    C: "A propositura de reconvenção no prazo da contestação.",
+                    D: "A desistência da ação aprovada pela parte contrária."
                 },
-                resposta: "A",
-                explicacao: "Conforme o programa (item 2.2.2), os critérios objetivos de fixação de competência são a matéria, a pessoa e o valor da causa; enquanto foro do domicílio e local do fato são critérios territoriais."
+                resposta: "B",
+                explicacao: "A vedação ao comportamento contraditório (venire contra factum proprium) impede que uma parte adote uma conduta incompatível com atos ou comportamentos anteriores que geraram legítima expectativa na outra parte."
             },
             {
                 id: 34,
-                nivel: "medio",
-                pergunta: "O princípio da *perpetuatio jurisdictionis* disciplina a fixação e modificação da competência no tempo. Por esse instituto, determina-se a competência no momento do registro ou da distribuição da petição inicial, sendo IRRELEVANTES as modificações do estado de fato ou de direito ocorridas posteriormente, SALVO quando:",
+                nivel: "Fácil",
+                topico: "Princípio da Cooperação",
+                pergunta: "O artigo 6º do CPC estabelece o princípio da cooperação entre os sujeitos do processo. Esse princípio fundamenta-se na concepção do processo civil como:",
                 alternativas: {
-                    A: "Houver alteração no domicílio residencial do réu durante a instrução.",
-                    B: "O autor modificar o valor da causa para valor inferior.",
-                    C: "Suprimirem órgão judiciário ou alterarem a competência absoluta.",
-                    D: "A parte vencida requerer a remessa dos autos para a Justiça Arbitral."
+                    A: "Uma comunidade de trabalho voltada a uma decisão justa e efetiva.",
+                    B: "Um combate formal entre partes adversárias sem intervenção do juiz.",
+                    C: "Um procedimento estritamente inquisitorial comandado pelo magistrado.",
+                    D: "Um negócio privado regido pela autonomia da vontade irrestrita."
                 },
-                resposta: "C",
-                explicacao: "Nos termos do CPC, a competência é determinada no momento do registro ou distribuição, não a alterando modificações posteriores de fato/direito, salvo quando suprimirem órgão judiciário ou alterarem a competência absoluta."
+                resposta: "A",
+                explicacao: "Art. 6º do CPC: Todos os sujeitos do processo devem cooperar entre si para que se obtenha, em tempo razoável, decisão de mérito justa e efetiva. O processo é visto como uma 'comunidade de trabalho'."
             },
             {
                 id: 35,
-                nivel: "medio",
-                pergunta: "No estudo das modificações de competência, a CONTINÊNCIA é um instituto atinente à reunião de ações conexas. Ocorre a continência entre duas ou mais ações quando:",
+                nivel: "Médio",
+                topico: "Princípio da Cooperação",
+                pergunta: "No modelo cooperativo de processo civil, atribuem-se deveres específicos ao magistrado. Assinale a opção que indica deveres do juiz decorrentes da cooperação:",
                 alternativas: {
-                    A: "As ações possuem pedidos idênticos, mas partes e causas de pedir totalmente opostas.",
-                    B: "Houver identidade quanto às partes e à causa de pedir, mas o pedido de uma, por ser mais amplo, abranger o das demais.",
-                    C: "Dois juízes de instâncias diversas declararem-se reciprocamente incompetentes.",
-                    D: "A causa principal já houver sido julgada em definitivo pela via arbitral."
+                    A: "Punição imediata, sigilo de atos, revelia automática e indeferimento sem oitiva.",
+                    B: "Substituição probatória total do autor e advocacia administrativa interna.",
+                    C: "Instauração de ofício de litígios societários privados sem provocação.",
+                    D: "Prevenção, esclarecimento, consulta e auxílio."
                 },
-                resposta: "B",
-                explicacao: "Dá-se a continência entre duas ou mais ações quando há identidade quanto às partes e à causa de pedir, mas o pedido de uma, por ser mais amplo, abrange o das demais (Art. 56 do CPC)."
+                resposta: "D",
+                explicacao: "Os deveres do juiz no modelo cooperativo são: Prevenção (apontar falhas para correção), Esclarecimento (esclarecer dúvidas/pedidos), Consulta (ouvir as partes antes de decidir) e Auxílio (ajudar na superação de obstáculos probatórios)."
             },
             {
                 id: 36,
-                nivel: "medio",
-                pergunta: "A evolução epistemológica da Teoria da Ação superou a fase da teoria civilista imanente (Savigny), em que a ação era vista como o próprio direito material em pé de guerra. A doutrina consagrou definitivamente a ação como um direito:",
+                nivel: "Médio",
+                topico: "Motivação das Decisões",
+                pergunta: "A motivação das decisões judiciais (Art. 93, IX, CF e Art. 489, §1º, CPC) é garantia constitucional contra o arbítrio. Não se considera fundamentada a decisão que:",
                 alternativas: {
-                    A: "Subordinado ao acolhimento final do pedido do autor na sentença.",
-                    B: "Inexistente no Direito Processual contemporâneo.",
-                    C: "Privativo do Ministério Público em ações patrimoniais.",
-                    D: "Autônomo e abstrato em relação ao direito material invocado."
+                    A: "Analisa detalhadamente as provas testemunhais produzidas nos autos.",
+                    B: "Enfrenta todos os argumentos capazes de infirmar a conclusão adotada pelo julgador.",
+                    C: "Limita-se à indicação, à reprodução ou à paráfrase de ato normativo, sem explicar sua relação com a causa.",
+                    D: "Aplica precedente jurisprudencial explicando sua enquadração fática ao caso."
                 },
-                resposta: "D",
-                explicacao: "Conforme a evolução metodológica (item 2.3.1), superou-se a teoria imanentista para consolidar a Teoria Abstrata e Autônoma do direito de ação, exercitável independentemente da existência real do direito material alegado."
+                resposta: "C",
+                explicacao: "Conforme o art. 489, §1º, I, do CPC, não se considera fundamentada a decisão judicial que se limitar à indicação, reprodução ou paráfrase de ato normativo, sem explicar sua relação com o caso concreto."
             },
             {
                 id: 37,
-                nivel: "facil",
-                pergunta: "A individualização de uma demanda jurisdicional é feita pela análise dos Elementos da Ação. Assinale a alternativa que indica CORRETAMENTE os três elementos estabilizadores da ação:",
+                nivel: "Fácil",
+                topico: "Casos Práticos",
+                pergunta: "Em um conflito entre vizinhos que possuem convivência diária e desejam preservar a relação harmoniosa sem impor soluções coercitivas, qual meio autocompositivo é o mais adequado?",
                 alternativas: {
-                    A: "Petição inicial, citação e réplica.",
-                    B: "Competência, jurisdição e juiz natural.",
-                    C: "Partes legítimas, causa de pedir e pedido.",
-                    D: "Interesse de agir, legitimidade e possibilidade jurídica."
+                    A: "A mediação, pois restaura a comunicação e auxilia na busca de soluções consensuais.",
+                    B: "A autotutela, autorizando o uso da força física para impor o direito.",
+                    C: "A arbitragem compulsória determinada pelo juiz de paz.",
+                    D: "A propositura imediata de ação penal privada irreconciliável."
                 },
-                resposta: "C",
-                explicacao: "Os elementos identificadores e estabilizadores da ação são: 1. Partes (autor e réu); 2. Causa de pedir (remota e próxima); e 3. Pedido (imediato e mediato)."
+                resposta: "A",
+                explicacao: "Havendo vínculo anterior e contínuo (como a vizinhança), a mediação é o mecanismo preferencial, pois visa restabelecer a comunicação e o diálogo sem impor propostas pré-fabricadas."
             },
             {
                 id: 38,
-                nivel: "medio",
-                pergunta: "A Causa de Pedir (elemento da ação) desdobra-se em causa de pedir remota e causa de pedir próxima. No sistema do Código de Processo Civil brasileiro, a Causa de Pedir REMOTA é representada pelos:",
+                nivel: "Médio",
+                topico: "Casos Práticos",
+                pergunta: "Se uma sentença arbitral condenatória transitada em julgado não for cumprida espontaneamente pelo devedor, o credor deverá promover a sua execução perante:",
                 alternativas: {
-                    A: "Fatos constitutivos do direito afirmado pelo autor.",
-                    B: "Fundamentos jurídicos e dispositivos legais invocados na petição.",
-                    C: "Provimentos jurisdicionais requeridos ao magistrado.",
-                    D: "Honorários de sucumbência arbitrados ao advogado."
+                    A: "O próprio árbitro, que detém poder de penhora sobre bens do devedor.",
+                    B: "O Poder Judiciário estatal, pois a sentença arbitral constitui título executivo judicial.",
+                    C: "A câmara de arbitragem via sanção administrativa compulsória.",
+                    D: "A Polícia Civil para lavratura de auto de penhora coercitiva."
                 },
-                resposta: "A",
-                explicacao: "A Causa de Pedir Remota abrange os fatos constitutivos da lide e do direito narrados pelo autor; enquanto a Causa de Pedir Próxima engloba os fundamentos jurídicos do pedido."
+                resposta: "B",
+                explicacao: "O árbitro não possui o poder de imperium (execução forçada sobre bens/pessoas). Sendo a sentença arbitral um título executivo judicial (CPC, art. 515, VII), sua execução forçada deve ser proposta perante o Poder Judiciário estatal."
             },
             {
                 id: 39,
-                nivel: "medio",
-                pergunta: "No estudo dos elementos da ação, o PEDIDO subdivide-se em pedido imediato e pedido mediato. O Pedido MEDIATO corresponde:",
+                nivel: "Médio",
+                topico: "Casos Práticos",
+                pergunta: "Um cidadão ingressou com ação de cobrança referente a uma dívida que já havia sido paga e quitada regularmente pelo devedor meses antes. O juiz deverá extinguir o processo por ausência de:",
                 alternativas: {
-                    A: "Ao requerimento de citação inicial do réu.",
-                    B: "À espécie de provimento jurisdicional buscado (ex: sentença condenatória).",
-                    C: "À nomeação de perito técnico para instrução.",
-                    D: "Ao bem da vida pretendido pelo autor (a tutela material buscada)."
+                    A: "Legitimidade extraordinária.",
+                    B: "Capacidade civil do autor.",
+                    C: "Competência absoluta.",
+                    D: "Interesse processual (utilidade e necessidade da tutela)."
                 },
                 resposta: "D",
-                explicacao: "O pedido imediato é a espécie de provimento processual almejado (condenação, declaração, constituição); já o pedido mediato é o bem da vida pretendido (a quantia, o imóvel, a prestação)."
+                explicacao: "Se o débito já foi voluntariamente quitado, a ação judicial não trará qualquer utilidade ou necessidade prática ao autor. Ocorre, portanto, a ausência de interesse processual (interesse de agir)."
             },
             {
                 id: 40,
-                nivel: "medio",
-                pergunta: "Para o exame de mérito, exige-se o preenchimento das Condições da Ação (art. 17 e 18 do CPC). Em regra, ninguém pode pleitear direito alheio em nome próprio, salvo por autorização expressa do ordenamento. Essa ressalva refere-se ao instituto da:",
+                nivel: "Fácil",
+                topico: "Evolução do Direito Processual",
+                pergunta: "A fase do Instrumentalismo no Direito Processual brasileiro destacou-se a partir dos anos 1980. Essa etapa caracteriza-se fundamentalmente por:",
                 alternativas: {
-                    A: "Legitimidade ordinária direta.",
-                    B: "Legitimidade extraordinária (Substituição Processual).",
-                    C: "Capacidade de ser parte incapaz.",
-                    D: "Capacidade postulatória estrita."
-                },
-                resposta: "B",
-                explicacao: "Nos termos do art. 18 do CPC, a legitimidade extraordinária (substituição processual) ocorre quando o ordenamento jurídico autoriza que alguém pleiteie direito alheio em nome próprio."
-            },
-            {
-                id: 41,
-                nivel: "medio",
-                pergunta: "O Interesse de Agir representa uma das condições da ação para a obtenção do provimento de mérito. Sob a perspectiva binária instrumental contemporânea, o interesse de agir é caracterizado pelo preenchimento de:",
-                alternativas: {
-                    A: "Conveniência e Oportunidade.",
-                    B: "Proporcionalidade e Subjetividade.",
-                    C: "Necessidade e Adequação.",
-                    D: "Bilateralidade e Publicidade."
+                    A: "Colocar a pureza das formas processuais acima da justiça material.",
+                    B: "Defender o retorno do sincretismo e o fim dos códigos de processo.",
+                    C: "Enfatizar o processo como instrumento ético de concretização e efetividade do direito material.",
+                    D: "Negar a interferência dos direitos fundamentais no julgamento do processo civil."
                 },
                 resposta: "C",
-                explicacao: "Conforme os apontamentos de revisão e da ementa (item 2.3.3), o interesse de agir traduz-se no binômio Necessidade (imprescindibilidade da via judicial) e Adequação (pertinência do provimento solicitado)."
-            },
-            {
-                id: 42,
-                nivel: "facil",
-                pergunta: "Quanto à Natureza Jurídica do Processo, a teoria consagrada e definitiva caracteriza o processo como:",
-                alternativas: {
-                    A: "Uma relação jurídica de direito público, angular, complexa, autônoma e de desenvolvimento progressivo.",
-                    B: "Um quase-contrato privado regido estritamente pela autonomia contratual.",
-                    C: "Uma instituição administrativa de fiscalização de impostos.",
-                    D: "Um contrato de prestação de serviços civis remunerados entre advogados."
-                },
-                resposta: "A",
-                explicacao: "Conforme o programa (item 3.2.1), o processo é dogmaticamente definido como uma relação jurídica de direito público, angular (autor, juiz, réu), complexa, autônoma e progressiva."
-            },
-            {
-                id: 43,
-                nivel: "medio",
-                pergunta: "Os Pressupostos Processuais dividem-se em pressupostos de existência e de validade. Assinale a alternativa que indica um Pressuposto Processual de EXISTÊNCIA jurídica do processo:",
-                alternativas: {
-                    A: "Competência absoluta do juízo.",
-                    B: "Imparcialidade do julgador.",
-                    C: "Capacidade processual do réu.",
-                    D: "Investidura jurisdicional do órgão (órgão investido de jurisdição)."
-                },
-                resposta: "D",
-                explicacao: "Constituem pressupostos processuais de existência: 1. Investidura jurisdicional do órgão; 2. Capacidade postulatória; e 3. Existência de demanda formulada. Competência e imparcialidade são pressupostos de validade."
-            },
-            {
-                id: 44,
-                nivel: "medio",
-                pergunta: "Para que o processo instaurado se desenvolva validamente e produza provimentos de mérito regulares, exige-se a presença dos Pressupostos Processuais de VALIDADE, dentre os quais figura:",
-                alternativas: {
-                    A: "Depósito compulsório de honorários contratuais.",
-                    B: "Competência absoluta do juízo, imparcialidade do julgador, capacidade de ser parte e capacidade processual.",
-                    C: "Inexistência de petição inicial escrita.",
-                    D: "Dispensa irrevogável do contraditório prévio."
-                },
-                resposta: "B",
-                explicacao: "Conforme o item 3.2.3 da Ementa, são pressupostos de validade e desenvolvimento regular: competência absoluta do juízo, imparcialidade do julgador, capacidade de ser parte e capacidade processual."
-            },
-            {
-                id: 45,
-                nivel: "medio",
-                pergunta: "A imparcialidade do julgador é protegida pelos institutos do Impedimento e da Suspeição. Ocorre uma hipótese objetiva de IMPEDIMENTO (presunção absoluta de parcialidade) quando o juiz:",
-                alternativas: {
-                    A: "For parte no processo ou nele tiver intervindo como mandatário de uma das partes, perito ou membro do MP.",
-                    B: "For amigo íntimo ou inimigo declarado de qualquer das partes.",
-                    C: "For credor ou devedor de qualquer das partes em contrato civil de pequeno valor.",
-                    D: "Receber presentes de partes antes ou depois de iniciado o processo sem cunho financeiro."
-                },
-                resposta: "A",
-                explicacao: "O impedimento constitui hipótese objetiva de parcialidade legalmente presumida (ex: ter intervindo na causa como perito, advogado, membro do MP ou ser parte). Amizade íntima e inimizade são hipóteses de suspeição."
-            },
-            {
-                id: 46,
-                nivel: "facil",
-                pergunta: "O Litisconsórcio configura-se pela presença de mais de um autor ou mais de um réu na mesma demanda. Diz-se que o litisconsórcio é NECESSÁRIO quando:",
-                alternativas: {
-                    A: "A sua formação for opcional e facultada ao autor na petição inicial.",
-                    B: "As partes decidirem por contrato escrito modificar a ordem de oitiva de testemunhas.",
-                    C: "Por disposição de lei ou pela natureza da relação jurídica litigiosa, a eficácia da sentença depender da citação de todos os litisconsortes.",
-                    D: "O valor do pedido ultrapixar cinquenta salários mínimos na data do ajuizamento."
-                },
-                resposta: "C",
-                explicacao: "Nos termos do art. 114 do CPC, o litisconsórcio é necessário quando por disposição de lei ou pela natureza da relação jurídica litigiosa, a eficácia da sentença depender da citação de todos que devam ser litisconsortes."
-            },
-            {
-                id: 47,
-                nivel: "facil",
-                pergunta: "Em observância ao princípio da cooperação e aos deveres de lealdade e probidade processual, o CPC reprime expressamente a litigância de má-fé. Incorre em litigância de má-fé a parte que:",
-                alternativas: {
-                    A: "Apresenta petição amparada em precedente vinculante do Superior Tribunal de Justiça.",
-                    B: "Requer a juntada de documentos novos em consonância com a lei.",
-                    C: "Promove a conciliação na primeira audiência do feito.",
-                    D: "Deduzir pretensão ou defesa contra texto expresso de lei ou fato incontroverso, ou alterar a verdade dos fatos."
-                },
-                resposta: "D",
-                explicacao: "Conforme a legislação processual (art. 80, CPC), responde por litigância de má-fé aquele que deduz pretensão/defesa contra texto expresso de lei ou fato incontroverso, ou altera deliberadamente a verdade dos fatos."
-            },
-            {
-                id: 48,
-                nivel: "facil",
-                pergunta: "Quanto às regras formais aplicáveis aos Atos Processuais (art. 192 e 189 do CPC), a Teoria Geral do Processo estabelece que os atos processuais devem ser praticados obrigatoriamente em:",
-                alternativas: {
-                    A: "Qualquer idioma oficial dos países membros do Mercosul.",
-                    B: "Idioma vernáculo (língua portuguesa), garantindo-se a publicidade, salvo as exceções legais de segredo de justiça.",
-                    C: "Sigilo absoluto para toda e qualquer ação perante a Justiça do Trabalho.",
-                    D: "Forma unicamente oral em todas as instâncias do Judiciário."
-                },
-                resposta: "B",
-                explicacao: "Nos termos do programa e do CPC, em todos os atos processuais é obrigatório o uso do idioma vernáculo (português), vigorando o princípio da publicidade, ressalvadas as hipóteses constitucionais e legais de segredo de justiça."
-            },
-            {
-                id: 49,
-                nivel: "medio",
-                pergunta: "O Princípio da Instrumentalidade das Formas e o dogma do *pas de nullité sans grief* regem a teoria das invalidades processuais. Por esse princípio, a decretação de nulidade de um ato processual exige:",
-                alternativas: {
-                    A: "A efetiva demonstração de prejuízo sofrido pela parte ou pelo processo.",
-                    B: "Apenas o descumprimento de prazos judiciais não peremptórios.",
-                    C: "A concordância do Ministério Público, mesmo em causas puramente patrimoniais.",
-                    D: "A repetição automática de todos os atos do processo desde a citação."
-                },
-                resposta: "A",
-                explicacao: "O brocardo *pas de nullité sans grief* estabelece que não há nulidade processual sem a efetiva demonstração de prejuízo para a defesa ou para o desenvolvimento regular do processo."
-            },
-            {
-                id: 50,
-                nivel: "facil",
-                pergunta: "As inovações tecnológicas trouxeram a aplicação de técnicas de *Visual Law* e *Legal Design* à elaboração de petições e documentos jurídicos. O objetivo dessas técnicas no processo contemporâneo é:",
-                alternativas: {
-                    A: "Substituir integralmente a fundamentação jurídica por recursos estéticos.",
-                    B: "Dificultar a leitura dos atos pelos juízes e auxiliares da justiça.",
-                    C: "Garantir acessibilidade, clareza informacional e persuasão lógica nas peças processuais.",
-                    D: "Impedir a digitalização do processo eletrônico."
-                },
-                resposta: "C",
-                explicacao: "Conforme o item 4.1.2 do programa de estudos, o uso de técnicas de Visual Law e Legal Design visa promover a acessibilidade, clareza informacional e persuasão lógica nas manifestações processuais."
-            },
-            {
-                id: 51,
-                nivel: "medio",
-                pergunta: "O art. 190 do Código de Processo Civil de 2015 autorizou a celebração de Negócios Jurídicos Processuais Atípicos. Por esse instituto, partes plenamente capazes podem, antes ou durante o processo:",
-                alternativas: {
-                    A: "Abolir as garantias fundamentais do contraditório e da ampla defesa.",
-                    B: "Estipular mudanças no procedimento para ajustá-lo às especificidades da causa e redefinir seus ônus e faculdades processuais.",
-                    C: "Isentar o magistrado do dever constitucional de fundamentar a decisão.",
-                    D: "Modificar unilateralmente as regras constitucionais de competência em matéria criminal."
-                },
-                resposta: "B",
-                explicacao: "O art. 190 do CPC permite que as partes plenamente capazes estipulem mudanças no procedimento para ajustá-lo às especificidades da causa e convencionem sobre seus ônus, deveres, faculdades e direitos processuais."
-            },
-            {
-                id: 52,
-                nivel: "facil",
-                pergunta: "No que tange à contagem dos Prazos Processuais fixados em dias no Código de Processo Civil de 2015, assinale a regra legalmente aplicável para os prazos estipulados por lei ou pelo juiz:",
-                alternativas: {
-                    A: "Computam-se continuamente todos os dias corridos, incluindo sábados, domingos e feriados.",
-                    B: "Iniciam-se obrigatoriamente no próprio dia da intimação verbal.",
-                    C: "Contam-se em dias corridos, mas suspendem-se durante os finais de semana.",
-                    D: "Computar-se-ão somente os dias úteis."
-                },
-                resposta: "D",
-                explicacao: "O art. 219 do CPC estabelece a regra de que, na contagem de prazos em dias estabelecidos por lei ou pelo juiz, computar-se-ão somente os dias úteis."
-            },
-            {
-                id: 53,
-                nivel: "medio",
-                pergunta: "A Preclusão é um instituto fundamental para garantir a marcha progressiva do processo no tempo. Ocorre a PRECLUSÃO CONSUMATIVA quando:",
-                alternativas: {
-                    A: "A parte deixa de praticar o ato no prazo legalmente assinalado.",
-                    B: "A parte pratica ato incompatível com outro que pretendia realizar.",
-                    C: "A faculdade processual já foi validamente exercida anteriormente no processo.",
-                    D: "O juiz extingue o processo de conhecimento com resolução de mérito."
-                },
-                resposta: "C",
-                explicacao: "Preclusão consumativa é a perda da faculdade de praticar determinado ato processual em virtude de ele já ter sido validamente realizado anteriormente no processo."
-            },
-            {
-                id: 54,
-                nivel: "medio",
-                pergunta: "A teoria geral das invalidades processuais prevê a convalidação dos atos defeituosos quando não houver prejuízo ou quando a finalidade for atingida. Quando a lei prescrever determinada forma sem cominação de nulidade, o juiz considerará válido o ato se:",
-                alternativas: {
-                    A: "Realizado por outro modo, lhe alcançar a finalidade essencial.",
-                    B: "Houver concordância formal da Defensoria Pública.",
-                    C: "O ato tiver sido praticado no balcão do tribunal regional.",
-                    D: "A parte sucumbente renunciar ao prazo recursal extraordinário."
-                },
-                resposta: "A",
-                explicacao: "Art. 277 do CPC: 'Quando a lei prescrever determinada forma, sem cominação de nulidade, o juiz considerará válido o ato se, realizado por outro modo, lhe alcançar a finalidade'."
-            },
-            {
-                id: 55,
-                nivel: "facil",
-                pergunta: "A doutrina processual estabelece a distinção conceitual e prática entre o Processo de Conhecimento e o Processo de Execução. A característica distintiva estruturante do Processo de Execução reside no fato de que ele visa precipuamente à:",
-                alternativas: {
-                    A: "Cognição exauriente dos fatos alegados para criar um juízo de certeza.",
-                    B: "Prolação de consulta abstrata sobre a interpretação da Constituição.",
-                    C: "Instauração de mediação familiar compulsória entre os litigantes.",
-                    D: "Satisfação direta e efetiva do direito já reconhecido em título executivo."
-                },
-                resposta: "D",
-                explicacao: "O Processo de Conhecimento visa a cognição e declaração do direito; enquanto o Processo de Execução visa à satisfação concreta da obrigação estipulada em título executivo."
-            },
-            {
-                id: 56,
-                nivel: "medio",
-                pergunta: "A inserção da Inteligência Artificial, do Aprendizado de Máquina (*Machine Learning*) e do processamento de linguagem natural na Jurimetria Forense é utilizada nos tribunais precipuamente para:",
-                alternativas: {
-                    A: "Abolir as sustentações orais dos advogados nos julgamentos colegiados.",
-                    B: "A predição probabilística de resultados e a gestão maciça de jurisprudência em litígios repetitivos.",
-                    C: "Substituir presencialmente a figura do juiz humano no interrogatório de réus presos.",
-                    D: "Revogar a incidência do Código de Processo Civil nas execuções fiscais."
-                },
-                resposta: "B",
-                explicacao: "Conforme o item 4.3.1 do programa de estudos, a jurimetria com machine learning é empregada na predição probabilística de resultados e no gerenciamento eficiente da jurisprudência e de acervos repetitivos."
-            },
-            {
-                id: 57,
-                nivel: "medio",
-                pergunta: "Nos Tribunais Superiores, utiliza-se a automação algorítmica para a triagem de admissibilidade dos recursos. Embora amplie a eficiência sistêmica, a doutrina adverte que essa automação deve ser ponderada em confronto com o preceito constitucional de:",
-                alternativas: {
-                    A: "Imutabilidade absoluta das leis administrativas.",
-                    B: "Monopólio estatal da atividade econômica.",
-                    C: "Acesso à justiça e inafastabilidade da jurisdição.",
-                    D: "Prerrogativa exclusiva do Poder Executivo em matéria tributária."
-                },
-                resposta: "C",
-                explicacao: "A automação de triagem recursal aumenta a eficiência do tribunal, mas deve ser constantemente equilibrada para não restringir indevidamente o direito fundamental de Acesso à Justiça e à ampla defesa."
-            },
-            {
-                id: 58,
-                nivel: "medio",
-                pergunta: "Com a utilização crescente de modelos de IA generativa e algorítmica na jurisdição, surge o desafio de evitar vieses algorítmicos (*algorithmic bias*). Para contornar esse risco, o devido processo legal tecnológico exige:",
-                alternativas: {
-                    A: "O controle humano significativo sobre as ferramentas de IA e a garantia de transparência.",
-                    B: "A vedação absoluta de qualquer uso de computadores ou softwares nos tribunais.",
-                    C: "O sigilo permanente sobre os algoritmos e códigos-fonte adotados pelo Judiciário.",
-                    D: "A transferência integral da responsabilidade judicante aos engenheiros de software."
-                },
-                resposta: "A",
-                explicacao: "Conforme o item 4.3.3 da ementa, o combate ao viés algorítmico requer imperativamente o controle humano significativo (supervisão de juízes) e a transparência do devido processo legal tecnológico."
-            },
-            {
-                id: 59,
-                nivel: "medio",
-                pergunta: "No contexto do Devido Processo Legal Tecnológico, a garantia da EXPLICABILIDADE dos algoritmos assegura às partes litigantes o direito de:",
-                alternativas: {
-                    A: "Escolher a marca do computador utilizado pelo magistrado prolator.",
-                    B: "Compreender a lógica, os parâmetros e os critérios utilizados pela ferramenta de Inteligência Artificial no apoio à decisão.",
-                    C: "Exigir que todas as peças do processo eletrônico sejam impressas em papel.",
-                    D: "Recusar a aplicação de súmulas vinculantes no caso concreto."
-                },
-                resposta: "B",
-                explicacao: "A explicabilidade garante que as partes e a sociedade possam compreender a racionalidade, a lógica e os parâmetros utilizados pela inteligência artificial, mantendo a motivação pública das decisões."
-            },
-            {
-                id: 60,
-                nivel: "facil",
-                pergunta: "A arquitetura das garantias fundamentais da Teoria Geral do Processo (Devido Processo Legal, Juiz Natural, Contraditório, Ampla Defesa, Boa-fé, Cooperação e Motivação) funciona como engrenagem interdependente. A eliminação de qualquer desses pilares acarretaria:",
-                alternativas: {
-                    A: "O aumento automático da eficácia das tutelas jurisdicionais de urgência.",
-                    B: "A otimização plena do sistema de arbitragem privada.",
-                    C: "O encerramento imediato de todos os processos pendentes na segunda instância.",
-                    D: "O colapso do sistema em tirania, arbítrio ou caos, sacrificando a proteção do cidadão contra o Estado."
-                },
-                resposta: "D",
-                explicacao: "Como sintetizado na conclusão dos materiais de TGP: a engrenagem das garantias fundamentais é interdependente; a remoção de qualquer pilar desmorona a arquitetura da justiça em tirania, arbítrio ou caos."
+                explicacao: "A fase do Instrumentalismo enfatiza a função social e política do processo como instrumento a serviço da efetividade do direito material e da justiça social."
             }
         ];
 
-        /* ==========================================================================
-           ESTADO DA APLICAÇÃO E SISTEMA DE PERSISTÊNCIA (LOCALSTORAGE)
-           ========================================================================== */
-        const STORAGE_KEY = "simulado_tgp_60_v1";
-        const LETRAS_ALTERNATIVAS = ["A", "B", "C", "D"];
+        const STORAGE_KEY = "simulado_tgp_av1_state_v1";
 
-        function embaralhar(itens) {
-            const resultado = [...itens];
-            for (let indice = resultado.length - 1; indice > 0; indice--) {
-                const aleatorio = Math.floor(Math.random() * (indice + 1));
-                [resultado[indice], resultado[aleatorio]] = [resultado[aleatorio], resultado[indice]];
-            }
-            return resultado;
-        }
-
-        function gerarOrdemAlternativas() {
-            let letraCorretaAnterior = null;
-
-            return questoes.map(questao => {
-                const posicoesCorretasDisponiveis = LETRAS_ALTERNATIVAS.filter(
-                    letra => letra !== letraCorretaAnterior
-                );
-                const letraCorreta = posicoesCorretasDisponiveis[
-                    Math.floor(Math.random() * posicoesCorretasDisponiveis.length)
-                ];
-                const ordem = embaralhar(
-                    LETRAS_ALTERNATIVAS.filter(letra => letra !== questao.resposta)
-                );
-                const alternativasOrdenadas = [];
-                alternativasOrdenadas[LETRAS_ALTERNATIVAS.indexOf(letraCorreta)] = questao.resposta;
-
-                let indiceDistrator = 0;
-                LETRAS_ALTERNATIVAS.forEach((letra, indice) => {
-                    if (letra !== letraCorreta) {
-                        alternativasOrdenadas[indice] = ordem[indiceDistrator++];
-                    }
-                });
-
-                letraCorretaAnterior = letraCorreta;
-                return alternativasOrdenadas;
-            });
-        }
-
-        function obterAlternativa(questaoIndex, letraExibida) {
-            const questao = questoes[questaoIndex];
-            const chaveOriginal = estadoApp.ordemAlternativas[questaoIndex][
-                LETRAS_ALTERNATIVAS.indexOf(letraExibida)
-            ];
-            return questao.alternativas[chaveOriginal];
-        }
-
-        function obterLetraCorreta(questaoIndex) {
-            const indiceCorreto = estadoApp.ordemAlternativas[questaoIndex].indexOf(
-                questoes[questaoIndex].resposta
-            );
-            return LETRAS_ALTERNATIVAS[indiceCorreto];
-        }
-
-        function ordemAlternativasValida(ordens) {
-            return Array.isArray(ordens) &&
-                ordens.length === questoes.length &&
-                ordens.every((ordem, indice) =>
-                    Array.isArray(ordem) &&
-                    ordem.length === LETRAS_ALTERNATIVAS.length &&
-                    new Set(ordem).size === LETRAS_ALTERNATIVAS.length &&
-                    LETRAS_ALTERNATIVAS.every(letra => ordem.includes(letra)) &&
-                    ordem.includes(questoes[indice].resposta)
-                );
-        }
-
-        function criarEstadoInicial() {
-            return {
-                currentIndex: 0,
-                respostas: Array(questoes.length).fill(null),
-                acertos: 0,
-                erros: 0,
-                opcaoSelecionadaTemporaria: null,
-                concluido: false,
-                ordemAlternativas: gerarOrdemAlternativas()
-            };
-        }
-
-        let estadoApp = criarEstadoInicial();
-
-        window.onload = function () {
-            carregarProgressoStorage();
-            salvarProgressoStorage();
-            renderizarTelaAtual();
+        let state = {
+            currentIndex: 0,
+            userAnswers: new Array(QUESTOES.length).fill(null),
+            correctCount: 0,
+            incorrectCount: 0,
+            isAnswered: new Array(QUESTOES.length).fill(false)
         };
 
-        document.addEventListener("keydown", function (evento) {
-            if (evento.altKey || evento.ctrlKey || evento.metaKey || evento.repeat) return;
-            if (estadoApp.concluido || estadoApp.respostas[estadoApp.currentIndex] !== null) return;
-            if (document.activeElement?.matches("input, textarea, select, [contenteditable='true']")) return;
-            if (!document.getElementById("modal-reiniciar").classList.contains("hidden") ||
-                !document.getElementById("modal-revisao").classList.contains("hidden")) return;
+        // DOM Elements
+        const statCurrentQ = document.getElementById("stat-current-q");
+        const statCorrect = document.getElementById("stat-correct");
+        const statIncorrect = document.getElementById("stat-incorrect");
+        const statAccuracy = document.getElementById("stat-accuracy");
+        const progressBar = document.getElementById("progress-bar");
+        const progressPercentText = document.getElementById("progress-percent-text");
 
-            const letra = evento.key.toUpperCase();
-            if (LETRAS_ALTERNATIVAS.includes(letra)) {
-                selecionarOpcao(letra);
-            }
-        });
+        const qLevel = document.getElementById("q-level");
+        const qTopic = document.getElementById("q-topic");
+        const qText = document.getElementById("q-text");
+        const optionsContainer = document.getElementById("options-container");
+        const feedbackPanel = document.getElementById("feedback-panel");
+        const feedbackHeader = document.getElementById("feedback-header");
+        const feedbackExplanation = document.getElementById("feedback-explanation");
 
-        function salvarProgressoStorage() {
+        const btnSubmit = document.getElementById("btn-submit");
+        const btnNext = document.getElementById("btn-next");
+        const btnReset = document.getElementById("btn-reset");
+
+        const quizView = document.getElementById("quiz-view");
+        const resultView = document.getElementById("result-view");
+        const reviewView = document.getElementById("review-view");
+
+        const resetModal = document.getElementById("reset-modal");
+
+        function loadState() {
             try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(estadoApp));
-            } catch (e) {
-                console.error("Erro ao salvar progresso no localStorage:", e);
-            }
-        }
-
-        function carregarProgressoStorage() {
-            try {
-                const dadosSalvos = localStorage.getItem(STORAGE_KEY);
-                if (dadosSalvos) {
-                    const parsed = JSON.parse(dadosSalvos);
-                    if (parsed && Array.isArray(parsed.respostas) && parsed.respostas.length === questoes.length) {
-                        if (!ordemAlternativasValida(parsed.ordemAlternativas)) {
-                            parsed.ordemAlternativas = gerarOrdemAlternativas();
-                            parsed.respostas.forEach((resposta, indice) => {
-                                if (!resposta) return;
-
-                                const ordem = parsed.ordemAlternativas[indice];
-                                const indiceEscolha = ordem.indexOf(resposta.escolha);
-                                const indiceCorreta = ordem.indexOf(questoes[indice].resposta);
-                                resposta.escolha = LETRAS_ALTERNATIVAS[indiceEscolha];
-                                resposta.correta = LETRAS_ALTERNATIVAS[indiceCorreta];
-                                resposta.acertou = resposta.correta === resposta.escolha;
-                            });
-                        }
-                        estadoApp = parsed;
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (parsed && Array.isArray(parsed.userAnswers) && parsed.userAnswers.length === QUESTOES.length) {
+                        state = parsed;
                     }
                 }
             } catch (e) {
-                console.error("Erro ao carregar do localStorage:", e);
+                console.error("Erro ao carregar estado do localStorage:", e);
             }
         }
 
-        /* ==========================================================================
-           LÓGICA DE RENDERIZAÇÃO E INTERAÇÃO DA QUESTÃO
-           ========================================================================== */
-        function renderizarTelaAtual() {
-            // Verificar se o simulado já foi concluído
-            if (estadoApp.concluido || estadoApp.currentIndex >= questoes.length) {
-                exibirResultadoFinal();
-                atualizarHeaderEStats();
+        function saveState() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            } catch (e) {
+                console.error("Erro ao salvar estado no localStorage:", e);
+            }
+        }
+
+        function clearState() {
+            localStorage.removeItem(STORAGE_KEY);
+            state = {
+                currentIndex: 0,
+                userAnswers: new Array(QUESTOES.length).fill(null),
+                correctCount: 0,
+                incorrectCount: 0,
+                isAnswered: new Array(QUESTOES.length).fill(false)
+            };
+        }
+
+        function updateDashboard() {
+            const total = QUESTOES.length;
+            const answeredTotal = state.correctCount + state.incorrectCount;
+
+            statCurrentQ.textContent = `${Math.min(state.currentIndex + 1, total)} / ${total}`;
+            statCorrect.textContent = state.correctCount;
+            statIncorrect.textContent = state.incorrectCount;
+
+            const accuracy = answeredTotal > 0 ? ((state.correctCount / answeredTotal) * 100).toFixed(1) : "0.0";
+            statAccuracy.textContent = `${accuracy}%`;
+
+            const progress = ((answeredTotal / total) * 100).toFixed(0);
+            progressBar.style.width = `${progress}%`;
+            progressPercentText.textContent = `${progress}%`;
+        }
+
+        function renderQuestion() {
+            if (state.currentIndex >= QUESTOES.length) {
+                showResultView();
                 return;
             }
 
-            document.getElementById("container-simulado").classList.remove("hidden");
-            document.getElementById("container-resultado-final").classList.add("hidden");
+            switchView(quizView);
 
-            const qAtual = questoes[estadoApp.currentIndex];
-            const respAnterior = estadoApp.respostas[estadoApp.currentIndex];
-            const letraCorreta = obterLetraCorreta(estadoApp.currentIndex);
+            const q = QUESTOES[state.currentIndex];
+            const answered = state.isAnswered[state.currentIndex];
+            const selectedOpt = state.userAnswers[state.currentIndex];
 
-            // Atualizar cabeçalho da questão
-            document.getElementById("num-questao").innerText = `QUESTÃO ${String(qAtual.id).padStart(2, '0')}`;
+            // Set metadata
+            qLevel.textContent = `Nível ${q.nivel}`;
+            qLevel.className = `badge ${q.nivel === 'Fácil' ? 'badge-easy' : 'badge-medium'}`;
+            qTopic.textContent = q.topico;
+            qText.textContent = `${q.id}. ${q.pergunta}`;
 
-            const badgeNivel = document.getElementById("badge-nivel");
-            if (qAtual.nivel === "facil") {
-                badgeNivel.className =
-                    "text-xs font-semibold px-2.5 py-1 rounded-md border bg-emerald-50 text-emerald-700 border-emerald-200";
-                badgeNivel.innerText = "Nível Fácil";
-            } else {
-                badgeNivel.className =
-                    "text-xs font-semibold px-2.5 py-1 rounded-md border bg-amber-50 text-amber-700 border-amber-200";
-                badgeNivel.innerText = "Nível Médio";
-            }
+            // Render options
+            optionsContainer.innerHTML = "";
+            const keys = ["A", "B", "C", "D"];
 
-            // Enunciado
-            document.getElementById("texto-enunciado").innerText = qAtual.pergunta;
+            keys.forEach(key => {
+                const optItem = document.createElement("div");
+                optItem.className = "option-item";
+                if (answered) optItem.classList.add("disabled");
+                if (!answered && selectedOpt === key) optItem.classList.add("selected");
 
-            // Renderizar Alternativas
-            const containerAlts = document.getElementById("container-alternativas");
-            containerAlts.innerHTML = "";
-
-            estadoApp.opcaoSelecionadaTemporaria = null;
-            document.getElementById("btn-responder").disabled = true;
-
-            const letras = LETRAS_ALTERNATIVAS;
-
-            letras.forEach(letra => {
-                const textoAlt = obterAlternativa(estadoApp.currentIndex, letra);
-                const btnAlt = document.createElement("button");
-                btnAlt.type = "button";
-                btnAlt.id = `alt-${letra}`;
-                btnAlt.onclick = () => selecionarOpcao(letra);
-                btnAlt.setAttribute(
-                    "aria-pressed",
-                    String(respAnterior ? respAnterior.escolha === letra : estadoApp.opcaoSelecionadaTemporaria === letra)
-                );
-                btnAlt.setAttribute("aria-label", `Alternativa ${letra}: ${obterAlternativa(estadoApp.currentIndex, letra)}`);
-
-                btnAlt.className =
-                    "w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition flex items-start space-x-3 cursor-pointer group";
-
-                // Se já respondeu esta questão anteriormente (ao navegar ou recarregar)
-                if (respAnterior) {
-                    btnAlt.disabled = true;
-                    if (letra === letraCorreta) {
-                        // Resposta correta oficial
-                        btnAlt.className =
-                            "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50/70 text-slate-900 font-medium flex items-start space-x-3";
-                    } else if (respAnterior.escolha === letra && !respAnterior.acertou) {
-                        // Escolha errada do usuário
-                        btnAlt.className =
-                            "w-full text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-50/70 text-slate-900 font-medium flex items-start space-x-3";
-                    } else {
-                        btnAlt.className =
-                            "w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 opacity-60 flex items-start space-x-3";
+                if (answered) {
+                    if (key === q.resposta) {
+                        optItem.classList.add("correct-answer");
+                    } else if (selectedOpt === key && key !== q.resposta) {
+                        optItem.classList.add("incorrect-answer");
                     }
                 }
 
-                const badgeLetra = document.createElement("span");
-                badgeLetra.id = `badge-letra-${letra}`;
-                badgeLetra.className =
-                    "flex-shrink-0 w-8 h-8 rounded-lg bg-slate-100 text-slate-700 font-bold flex items-center justify-center text-sm border border-slate-200 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition";
-                badgeLetra.textContent = letra;
-
-                const textoAlternativa = document.createElement("span");
-                textoAlternativa.className =
-                    "min-w-0 text-sm sm:text-base text-slate-700 pt-0.5 leading-relaxed font-normal";
-                textoAlternativa.textContent = textoAlt;
-
-                btnAlt.appendChild(badgeLetra);
-                btnAlt.appendChild(textoAlternativa);
-
-                containerAlts.appendChild(btnAlt);
-            });
-
-            // Gerenciar Painel de Correção
-            const painelCorrecao = document.getElementById("painel-correcao");
-            if (respAnterior) {
-                exibirPainelCorrecao(respAnterior.acertou, letraCorreta, respAnterior.escolha, qAtual.explicacao);
-                document.getElementById("btn-responder").classList.add("hidden");
-            } else {
-                painelCorrecao.classList.add("hidden");
-                document.getElementById("btn-responder").classList.remove("hidden");
-            }
-
-            atualizarHeaderEStats();
-        }
-
-        function selecionarOpcao(letra) {
-            if (estadoApp.respostas[estadoApp.currentIndex] !== null) return; // já respondida
-
-            estadoApp.opcaoSelecionadaTemporaria = letra;
-
-            const letras = LETRAS_ALTERNATIVAS;
-            letras.forEach(l => {
-                const btn = document.getElementById(`alt-${l}`);
-                const badge = document.getElementById(`badge-letra-${l}`);
-                btn.setAttribute("aria-pressed", String(l === letra));
-                if (l === letra) {
-                    btn.className =
-                        "w-full text-left p-4 rounded-xl border-2 border-blue-600 bg-blue-50/60 font-medium flex items-start space-x-3 transition shadow-sm";
-                    badge.className =
-                        "flex-shrink-0 w-8 h-8 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-sm border border-blue-600";
-                } else {
-                    btn.className =
-                        "w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition flex items-start space-x-3 cursor-pointer group";
-                    badge.className =
-                        "flex-shrink-0 w-8 h-8 rounded-lg bg-slate-100 text-slate-700 font-bold flex items-center justify-center text-sm border border-slate-200 group-hover:bg-blue-600 group-hover:text-white transition";
-                }
-            });
-
-            document.getElementById("btn-responder").disabled = false;
-        }
-
-        function processarResposta() {
-            const escolha = estadoApp.opcaoSelecionadaTemporaria;
-            if (!escolha) return;
-
-            const qAtual = questoes[estadoApp.currentIndex];
-            const letraCorreta = obterLetraCorreta(estadoApp.currentIndex);
-            const acertou = (escolha === letraCorreta);
-
-            if (acertou) {
-                estadoApp.acertos++;
-            } else {
-                estadoApp.erros++;
-            }
-
-            estadoApp.respostas[estadoApp.currentIndex] = {
-                escolha: escolha,
-                correta: letraCorreta,
-                acertou: acertou
-            };
-
-            salvarProgressoStorage();
-
-            // Desabilitar alternativas
-            const letras = LETRAS_ALTERNATIVAS;
-            letras.forEach(l => {
-                const btn = document.getElementById(`alt-${l}`);
-                btn.disabled = true;
-                if (l === letraCorreta) {
-                    btn.className =
-                        "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50/80 font-medium flex items-start space-x-3";
-                } else if (l === escolha && !acertou) {
-                    btn.className =
-                        "w-full text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-50/80 font-medium flex items-start space-x-3";
-                } else {
-                    btn.className =
-                        "w-full text-left p-4 rounded-xl border border-slate-200 bg-slate-50 opacity-60 flex items-start space-x-3";
-                }
-            });
-
-            document.getElementById("btn-responder").classList.add("hidden");
-
-            exibirPainelCorrecao(acertou, letraCorreta, escolha, qAtual.explicacao);
-            atualizarHeaderEStats();
-        }
-
-        function exibirPainelCorrecao(acertou, correta, escolha, explicacao) {
-            const painel = document.getElementById("painel-correcao");
-            const statusDiv = document.getElementById("status-resposta");
-            const textoExp = document.getElementById("texto-explicacao");
-            const lblProx = document.getElementById("lbl-proxima");
-
-            painel.classList.remove("hidden");
-            textoExp.innerText = explicacao;
-
-            if (acertou) {
-                statusDiv.className =
-                    "flex items-center space-x-3 p-4 rounded-xl font-bold text-emerald-800 bg-emerald-100/80 border border-emerald-300 shadow-sm";
-                statusDiv.innerHTML = `
-                    <div class="bg-emerald-600 text-white p-1.5 rounded-lg">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                    </div>
-                    <div>
-                        <span class="block text-sm font-black uppercase tracking-wider text-emerald-900">RESPOSTA CORRETA!</span>
-                        <span class="text-xs font-semibold text-emerald-800">Você assinalou a alternativa [${escolha}]. Excelente trabalho!</span>
-                    </div>
+                optItem.innerHTML = `
+                    <div class="option-prefix">${key}</div>
+                    <div class="option-text">${q.alternativas[key]}</div>
                 `;
-            } else {
-                statusDiv.className =
-                    "flex items-center space-x-3 p-4 rounded-xl font-bold text-rose-800 bg-rose-100/80 border border-rose-300 shadow-sm";
-                statusDiv.innerHTML = `
-                    <div class="bg-rose-600 text-white p-1.5 rounded-lg">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
-                    </div>
-                    <div>
-                        <span class="block text-sm font-black uppercase tracking-wider text-rose-900">RESPOSTA INCORRETA</span>
-                        <span class="text-xs font-semibold text-rose-800">Sua resposta: [${escolha}] • Alternativa Correta: [${correta}]</span>
-                    </div>
-                `;
-            }
 
-            if (estadoApp.currentIndex === questoes.length - 1) {
-                lblProx.innerText = "Ver Resultado Final 🎉";
-            } else {
-                lblProx.innerText = "Próxima Questão";
-            }
-        }
-
-        function avancarQuestao() {
-            if (estadoApp.currentIndex < questoes.length - 1) {
-                estadoApp.currentIndex++;
-                salvarProgressoStorage();
-                renderizarTelaAtual();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                estadoApp.concluido = true;
-                salvarProgressoStorage();
-                exibirResultadoFinal();
-            }
-        }
-
-        /* ==========================================================================
-           CÁLCULO DE MÉTRICAS E ESTATÍSTICAS (PERCENTUAIS REGULAMENTARES)
-           ========================================================================== */
-        function atualizarHeaderEStats() {
-            const respondidasCount = estadoApp.respostas.filter(r => r !== null).length;
-            const acertosCount = estadoApp.acertos;
-            const errosCount = estadoApp.erros;
-            const pendentesCount = questoes.length - respondidasCount;
-
-            // Fórmulas exatas conforme edital/solicitação
-            const pctAcertos = respondidasCount > 0 ? ((acertosCount / respondidasCount) * 100).toFixed(0) : 0;
-            const pctErros = respondidasCount > 0 ? ((errosCount / respondidasCount) * 100).toFixed(0) : 0;
-            const pctProgressoGeral = ((respondidasCount / questoes.length) * 100).toFixed(0);
-
-            // Atualizar elementos da UI
-            const questaoExibida = questoes[estadoApp.currentIndex];
-            document.getElementById("txt-progresso-contador").innerText =
-                `Questão ${questaoExibida ? questaoExibida.id : questoes.length} de ${questoes.length}`;
-            document.getElementById("val-acertos").innerText = acertosCount;
-            document.getElementById("val-erros").innerText = errosCount;
-            document.getElementById("val-aproveitamento").innerText = `${pctAcertos}%`;
-            document.getElementById("barra-progresso").style.width = `${pctProgressoGeral}%`;
-            document.getElementById("barra-progresso").setAttribute("aria-valuenow", respondidasCount);
-
-            document.getElementById("stat-respondidas").innerText = `${respondidasCount} / ${questoes.length}`;
-            document.getElementById("stat-pendentes").innerText = pendentesCount;
-            document.getElementById("stat-pct-acerto").innerText = `${pctAcertos}%`;
-            document.getElementById("stat-pct-erro").innerText = `${pctErros}%`;
-        }
-
-        /* ==========================================================================
-           TELA DE RESULTADO FINAL E MENSAGEM DIDÁTICA
-           ========================================================================== */
-        function exibirResultadoFinal() {
-            document.getElementById("container-simulado").classList.add("hidden");
-            document.getElementById("container-resultado-final").classList.remove("hidden");
-
-            const acertos = estadoApp.acertos;
-            const erros = estadoApp.erros;
-            const pctAproveitamento = ((acertos / questoes.length) * 100);
-            const pctFormatado = pctAproveitamento.toFixed(0);
-
-            document.getElementById("rf-acertos").innerText = acertos;
-            document.getElementById("rf-erros").innerText = erros;
-            document.getElementById("rf-aproveitamento").innerText = `${pctFormatado}%`;
-
-            const cardMsg = document.getElementById("rf-mensagem-card");
-            const tituloMsg = document.getElementById("rf-mensagem-titulo");
-            const descMsg = document.getElementById("rf-mensagem-desc");
-
-            if (pctAproveitamento >= 90) {
-                cardMsg.className =
-                "p-6 rounded-2xl border text-left bg-emerald-50 border-emerald-200 text-emerald-900";
-                tituloMsg.innerText = "Excelente desempenho! 🏆";
-                descMsg.innerText =
-                    "Parabéns! Você demonstrou um domínio altíssimo de Teoria Geral do Processo, compreendendo com precisão as garantias constitucionais e as normas fundamentais.";
-            } else if (pctAproveitamento >= 80) {
-                cardMsg.className = "p-6 rounded-2xl border text-left bg-blue-50 border-blue-200 text-blue-900";
-                tituloMsg.innerText = "Ótimo desempenho! 👏";
-                descMsg.innerText =
-                    "Você tem uma excelente base teórica e prática na matéria. Revise os pontos em que cometeu deslizes no mapa de questões para consolidar o gabarito!";
-            } else if (pctAproveitamento >= 70) {
-                cardMsg.className = "p-6 rounded-2xl border text-left bg-indigo-50 border-indigo-200 text-indigo-900";
-                tituloMsg.innerText = "Bom desempenho! 👍";
-                descMsg.innerText =
-                    "Seu resultado foi satisfatório! Continue treinando as exceções e jurisprudências específicas do STF e TJDFT para subir ainda mais a sua taxa de acertos.";
-            } else if (pctAproveitamento >= 60) {
-                cardMsg.className = "p-6 rounded-2xl border text-left bg-amber-50 border-amber-200 text-amber-900";
-                tituloMsg.innerText = "Desempenho razoável. Continue estudando! 📚";
-                descMsg.innerText =
-                    "Você compreende os princípios gerais, mas precisa atentar-se aos detalhes de princípios específicos, competência e atos processuais. Utilize o modo de revisão!";
-            } else {
-                cardMsg.className = "p-6 rounded-2xl border text-left bg-rose-50 border-rose-200 text-rose-900";
-                tituloMsg.innerText = "Recomenda-se revisar o conteúdo e continuar praticando. 💡";
-                descMsg.innerText =
-                    "Não desanime! Teoria Geral do Processo exige assimilação progressiva. Leia atentamente as explicações didáticas da revisão e refaça o simulado para fixar a matéria.";
-            }
-
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        /* ==========================================================================
-           SISTEMA DE REINICIALIZAÇÃO DO SIMULADO
-           ========================================================================== */
-        function solicitarReiniciar() {
-            document.getElementById("modal-reiniciar").classList.remove("hidden");
-        }
-
-        function fecharModalReiniciar() {
-            document.getElementById("modal-reiniciar").classList.add("hidden");
-        }
-
-        function confirmarReiniciar() {
-            localStorage.removeItem(STORAGE_KEY);
-            estadoApp = criarEstadoInicial();
-            salvarProgressoStorage();
-            fecharModalReiniciar();
-            renderizarTelaAtual();
-        }
-
-        /* ==========================================================================
-           SISTEMA DE MAPA E REVISÃO DE QUESTÕES
-           ========================================================================== */
-        function abrirModalRevisao() {
-            document.getElementById("modal-revisao").classList.remove("hidden");
-            filtrarRevisao('todas');
-        }
-
-        function fecharModalRevisao() {
-            document.getElementById("modal-revisao").classList.add("hidden");
-        }
-
-        function filtrarRevisao(filtro) {
-            // Atualizar botões de filtro
-            const botoes = ["todas", "acertos", "erros", "pendentes"];
-            botoes.forEach(f => {
-                const btn = document.getElementById(`flt-${f}`);
-                if (f === filtro) {
-                    btn.className =
-                        "btn-filtro px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white shadow-sm";
-                } else {
-                    btn.className =
-                        "btn-filtro px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100";
+                if (!answered) {
+                    optItem.addEventListener("click", () => selectOption(key));
                 }
+
+                optionsContainer.appendChild(optItem);
             });
 
-            const lista = document.getElementById("lista-revisao");
-            lista.innerHTML = "";
+            // Handle action buttons & feedback panel
+            if (answered) {
+                btnSubmit.style.display = "none";
+                btnNext.style.display = "inline-flex";
 
-            questoes.forEach((q, idx) => {
-                const resp = estadoApp.respostas[idx];
+                feedbackPanel.style.display = "block";
+                const isCorrect = selectedOpt === q.resposta;
+                feedbackPanel.className = `feedback-box ${isCorrect ? 'correct' : 'incorrect'}`;
 
-                if (filtro === 'acertos' && (!resp || !resp.acertou)) return;
-                if (filtro === 'erros' && (!resp || resp.acertou)) return;
-                if (filtro === 'pendentes' && resp !== null) return;
+                feedbackHeader.innerHTML = isCorrect ?
+                    `<span>✅ RESPOSTA CORRETA!</span>` :
+                    `<span>❌ RESPOSTA INCORRETA! (Gabarito: ${q.resposta})</span>`;
 
-                const card = document.createElement("div");
-                card.className =
-                    "bg-white p-5 rounded-2xl border border-slate-200 space-y-3 shadow-sm hover:border-slate-300 transition";
+                feedbackExplanation.innerHTML = `<strong>Explicação:</strong> ${q.explicacao}`;
+            } else {
+                btnSubmit.style.display = "inline-flex";
+                btnSubmit.disabled = selectedOpt === null;
+                btnNext.style.display = "none";
+                feedbackPanel.style.display = "none";
+            }
 
+            updateDashboard();
+        }
+
+        function selectOption(key) {
+            if (state.isAnswered[state.currentIndex]) return;
+            state.userAnswers[state.currentIndex] = key;
+            saveState();
+            renderQuestion();
+        }
+
+        function submitAnswer() {
+            const currentIdx = state.currentIndex;
+            const selected = state.userAnswers[currentIdx];
+            if (!selected || state.isAnswered[currentIdx]) return;
+
+            const q = QUESTOES[currentIdx];
+            state.isAnswered[currentIdx] = true;
+
+            if (selected === q.resposta) {
+                state.correctCount++;
+            } else {
+                state.incorrectCount++;
+            }
+
+            saveState();
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (state.currentIndex < QUESTOES.length - 1) {
+                state.currentIndex++;
+                saveState();
+                renderQuestion();
+            } else {
+                showResultView();
+            }
+        }
+
+        function showResultView() {
+            switchView(resultView);
+            updateDashboard();
+
+            const total = QUESTOES.length;
+            const correct = state.correctCount;
+            const incorrect = state.incorrectCount;
+            const percent = ((correct / total) * 100).toFixed(1);
+            const errorPercent = ((incorrect / total) * 100).toFixed(1);
+
+            document.getElementById("res-correct").textContent = correct;
+            document.getElementById("res-incorrect").textContent = incorrect;
+            document.getElementById("res-percent").textContent = `${percent}%`;
+            document.getElementById("res-error-percent").textContent = `${errorPercent}%`;
+
+            // Score circle visual
+            const scoreCircle = document.getElementById("score-circle");
+            const angle = (percent / 100) * 360;
+            scoreCircle.style.setProperty("--score-angle", `${angle}deg`);
+
+            // Message badge
+            const resMsgBadge = document.getElementById("res-msg-badge");
+            const pctVal = parseFloat(percent);
+
+            if (pctVal >= 90) {
+                resMsgBadge.textContent = "🏆 Excelente desempenho! Você dominou o conteúdo de TGP!";
+                resMsgBadge.style.backgroundColor = "#dcfce7";
+                resMsgBadge.style.color = "#15803d";
+            } else if (pctVal >= 80) {
+                resMsgBadge.textContent = "🌟 Ótimo desempenho! Você tem sólida compreensão dos temas!";
+                resMsgBadge.style.backgroundColor = "#e0f2fe";
+                resMsgBadge.style.color = "#0369a1";
+            } else if (pctVal >= 70) {
+                resMsgBadge.textContent = "👍 Bom desempenho! Está no caminho certo para a aprovação.";
+                resMsgBadge.style.backgroundColor = "#fef9c3";
+                resMsgBadge.style.color = "#a16207";
+            } else if (pctVal >= 60) {
+                resMsgBadge.textContent = "⚠️ Desempenho razoável. Continue estudando e praticando!";
+                resMsgBadge.style.backgroundColor = "#ffedd5";
+                resMsgBadge.style.color = "#c2410c";
+            } else {
+                resMsgBadge.textContent = "📚 Recomenda-se revisar integralmente o material e refazer o simulado.";
+                resMsgBadge.style.backgroundColor = "#fee2e2";
+                resMsgBadge.style.color = "#b91c1c";
+            }
+        }
+
+        function showReviewView() {
+            switchView(reviewView);
+            const reviewList = document.getElementById("review-list");
+            reviewList.innerHTML = "";
+
+            QUESTOES.forEach((q, idx) => {
+                const userAns = state.userAnswers[idx];
+                const answered = state.isAnswered[idx];
+                const isCorrect = userAns === q.resposta;
+
+                let statusClass = "status-unanswered";
                 let statusBadge =
-                    `<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200">NÃO RESPONDIDA</span>`;
-                if (resp) {
-                    if (resp.acertou) {
+                    `<span class="badge" style="background:#e2e8f0; color:#475569;">Não Respondida</span>`;
+
+                if (answered) {
+                    if (isCorrect) {
+                        statusClass = "status-correct";
                         statusBadge =
-                            `<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">✓ ACERTOU</span>`;
+                            `<span class="badge badge-easy" style="background:#d1fae5; color:#065f46;">Acertou</span>`;
                     } else {
+                        statusClass = "status-incorrect";
                         statusBadge =
-                            `<span class="px-2.5 py-1 rounded-md text-xs font-bold bg-rose-100 text-rose-800 border border-rose-300">✕ ERROU</span>`;
+                            `<span class="badge" style="background:#fee2e2; color:#991b1b;">Errou</span>`;
                     }
                 }
 
-                card.innerHTML = `
-                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                        <div class="flex items-center space-x-2">
-                            <span class="font-black text-sm text-slate-900">Questão ${String(q.id).padStart(2, '0')}</span>
-                            <span class="text-xs text-slate-400">• ${q.nivel === 'facil' ? 'Nível Fácil' : 'Nível Médio'}</span>
-                        </div>
+                const item = document.createElement("div");
+                item.className = `review-item ${statusClass}`;
+                item.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                        <span class="review-q-num">Questão ${q.id} de ${QUESTOES.length} • ${q.topico}</span>
                         ${statusBadge}
                     </div>
-
-                    <p class="text-sm font-medium text-slate-800 leading-relaxed">${q.pergunta}</p>
-
-                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs space-y-1">
-                        <div><strong>Sua Escolha:</strong> ${resp ? `${resp.escolha}) ${obterAlternativa(idx, resp.escolha)}` : 'Nenhuma'}</div>
-                        <div><strong>Gabarito Oficial:</strong> <span class="text-emerald-700 font-bold">${obterLetraCorreta(idx)}) ${obterAlternativa(idx, obterLetraCorreta(idx))}</span></div>
+                    <p style="font-weight:600; margin-bottom:0.75rem; color:var(--text-main);">${q.pergunta}</p>
+                    <div style="font-size:0.9rem; margin-bottom:0.5rem;">
+                        <div><strong>Sua Escolha:</strong> ${userAns ? `${userAns}) ${q.alternativas[userAns]}` : '<em>Nenhuma alternativa selecionada</em>'}</div>
+                        <div><strong>Gabarito Correto:</strong> ${q.resposta}) ${q.alternativas[q.resposta]}</div>
                     </div>
-
-                    <div class="text-xs text-slate-600 bg-blue-50/50 p-3 rounded-xl border border-blue-100">
-                        <strong class="text-blue-900 block mb-1">Fundamentação / Comentário:</strong>
-                        ${q.explicacao}
-                    </div>
-
-                    <div class="flex justify-end pt-1">
-                        <button onclick="irParaQuestao(${idx})" class="text-xs font-bold text-blue-600 hover:text-blue-800 hover:underline flex items-center gap-1">
-                            <span>Ir para esta questão no simulado</span> →
-                        </button>
+                    <div style="font-size:0.85rem; background:#f8fafc; padding:0.75rem; border-radius:6px; border:1px solid #e2e8f0; color:#334155;">
+                        <strong>Explicação:</strong> ${q.explicacao}
                     </div>
                 `;
-
-                lista.appendChild(card);
+                reviewList.appendChild(item);
             });
+        }
 
-            if (lista.children.length === 0) {
-                lista.innerHTML =
-                    `<div class="text-center py-12 text-slate-400 text-sm font-medium">Nenhuma questão encontrada para este filtro.</div>`;
+        function switchView(viewElement) {
+            [quizView, resultView, reviewView].forEach(v => v.classList.remove("active"));
+            viewElement.classList.add("active");
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        btnSubmit.addEventListener("click", submitAnswer);
+        btnNext.addEventListener("click", nextQuestion);
+
+        // Reset handlers with confirmation modal
+        function openResetModal() {
+            resetModal.classList.add("active");
+        }
+
+        function closeResetModal() {
+            resetModal.classList.remove("active");
+        }
+
+        document.getElementById("btn-header-reset").addEventListener("click", openResetModal);
+        btnReset.addEventListener("click", openResetModal);
+        document.getElementById("btn-res-restart").addEventListener("click", openResetModal);
+        document.getElementById("btn-modal-cancel").addEventListener("click", closeResetModal);
+
+        document.getElementById("btn-modal-confirm").addEventListener("click", () => {
+            clearState();
+            closeResetModal();
+            renderQuestion();
+        });
+
+        // Navigation to review handlers
+        document.getElementById("btn-header-review").addEventListener("click", showReviewView);
+        document.getElementById("btn-res-review").addEventListener("click", showReviewView);
+        document.getElementById("btn-close-review").addEventListener("click", () => {
+            if (state.currentIndex >= QUESTOES.length) {
+                showResultView();
+            } else {
+                switchView(quizView);
             }
-        }
+        });
 
-        function irParaQuestao(idx) {
-            estadoApp.currentIndex = idx;
-            salvarProgressoStorage();
-            fecharModalRevisao();
-            renderizarTelaAtual();
-        }
+        // Initialize App on Load
+        window.addEventListener("DOMContentLoaded", () => {
+            loadState();
+            if (state.currentIndex >= QUESTOES.length) {
+                showResultView();
+            } else {
+                renderQuestion();
+            }
+        });
     </script>
 </body>
 
